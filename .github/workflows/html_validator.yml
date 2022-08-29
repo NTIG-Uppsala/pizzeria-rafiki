@@ -3,9 +3,9 @@ name: css & HTML5 Validator
   
 on: 
     push: 
-        branches: *
+        branches: '*'
     pull_request:
-        branches: *
+        branches: '*'
   
 jobs:
     steps:

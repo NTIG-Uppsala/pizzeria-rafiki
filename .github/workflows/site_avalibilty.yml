@@ -23,4 +23,4 @@ jobs:
                 python -m pip install -r tests_requirements.txt
                 apt-get install -y chromium-browser
             - name: Run Test avalibility script
-              run: python src/tests/test_avalability.py
+              run: python src/tests/test_availability.py

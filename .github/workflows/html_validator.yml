@@ -14,12 +14,12 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: 'DEBUG: show filesystem'
-              run: ls
             - name: ✔ HTML5 Validator
               uses: Cyb3r-Jak3/html5validator-action@v0.6.1
               with:
                 root: src/
                 css: true
+            - name: 'DEBUG: show filesystem'
+              run: ls -al
 
   

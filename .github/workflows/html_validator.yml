@@ -6,16 +6,18 @@ on:
         branches: ['*']
     pull_request:
         branches: ['*']
-  
+
+permissions: read-all
+
 jobs:
     build_test:
         runs-on: ubuntu-latest
 
         steps:
-            - name: HTML5Validator
-              uses: Cyb3r-Jak3/html5validator-action@master
+            - name: ✔ HTML5 Validator
+              uses: Cyb3r-Jak3/html5validator-action@v7.1.1
               with:
-                root: src/
+                root: /src/
                 css: true
 
   

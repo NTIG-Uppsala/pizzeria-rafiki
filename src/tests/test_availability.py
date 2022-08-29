@@ -16,7 +16,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser = webdriver.Chrome(driver_path, options=chrome_options) # Initiliserar chrome drivern från den nerladdade
         self.addCleanup(self.browser.quit) # stäng webläsaren när testen är klar
 
-        self.website_url = "https://ntig-uppsala.github.io/pizzeria-rafiki/" # Urln som kommer användas
+        self.website_url = "https://ntig-uppsala.github.io/pizzeria-rafiki/src/" # Urln som kommer användas
 
     # Test som kollar ifall Pizzeria rafiki finns med i titeln på sidan pizzeria-rafiki.github.io
     def test_page_title(self):

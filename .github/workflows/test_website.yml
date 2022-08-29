@@ -1,5 +1,5 @@
 
-name: Checks if website is online on web
+name: Run tests on website
   
 on: 
     push: 
@@ -22,5 +22,5 @@ jobs:
               run: |
                 python -m pip install -r tests_requirements.txt
                 sudo apt-get install -y chromium-browser
-            - name: Run Test avalibility script
-              run: python src/tests/test_availability.py
+            - name: Run Tests script
+              run: python src/tests/test_website.py

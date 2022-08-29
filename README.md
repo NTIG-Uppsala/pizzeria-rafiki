@@ -10,3 +10,6 @@ Testerna kan även köras som github action för att automatisera körninge. [Se
 
 ## Uppdatera dependencies
 Skulle det installera nya biliotek eller något behöver uppdateras så kan man använda [pipreqs](https://pypi.org/project/pipreqs/) för att generera en dependencies fil med de bibliotek som användas i skriptet.
+
+## HTML validering
+En [github action](https://github.com/Cyb3r-Jak3/html5validator-action) validerar koden vid varje push & pull-request

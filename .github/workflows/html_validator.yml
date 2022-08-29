@@ -3,15 +3,16 @@ name: css & HTML5 Validator
   
 on: 
 	push: 
-    	branches: '*'
+    	branches: *
 	pull_request:
-		branches: '*'
+		branches: *
   
 jobs:
-	name: Test css & HTML code
-	uses: Cyb3r-Jak3/html5validator-action@v7.1.1
-	with:
-		css: true
-		root: src/
+	steps:
+		- name: Test css & HTML code
+		uses: Cyb3r-Jak3/html5validator-action@v7.1.1
+		with:
+			css: true
+			root: src/
   
   

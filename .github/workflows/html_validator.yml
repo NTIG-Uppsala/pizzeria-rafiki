@@ -17,7 +17,7 @@ jobs:
             - name: 'DEBUG: show filesystem 1'
               run: ls -al
             - name: ✔ HTML5 Validator
-              uses: Cyb3r-Jak3/html5validator-action@v0.6.1
+              uses: Cyb3r-Jak3/html5validator-action@v7.1.1
               with:
                 root: src/
                 css: true

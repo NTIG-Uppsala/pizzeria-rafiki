@@ -15,9 +15,9 @@ jobs:
 
         steps:
             - name: ✔ HTML5 Validator
-              uses: Cyb3r-Jak3/html5validator-action@v7.1.1
+              uses: Cyb3r-Jak3/html5validator-action@v0.6.1
               with:
-                root: /src/
+                root: src/
                 css: true
 
   

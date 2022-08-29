@@ -7,13 +7,13 @@ on:
     pull_request:
         branches: ['*']
 
-permissions: read-all
-
 jobs:
     build_test:
         runs-on: ubuntu-latest
 
         steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v2
             - name: 'DEBUG: show filesystem 1'
               run: ls -al
             - name: ✔ HTML5 Validator
@@ -21,7 +21,4 @@ jobs:
               with:
                 root: src/
                 css: true
-            - name: 'DEBUG: show filesystem 2'
-              run: ls -al
-
   

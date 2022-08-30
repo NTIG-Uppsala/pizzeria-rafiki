@@ -37,8 +37,8 @@ jobs:
               run: |
                 cd src/
                 python -m http.server &
-            - name: Run Tests scripts
-              run: python src/tests/test_website.py
+            - name: Run Tests scripts on localhost
+              run: python tests/test_website.py http://localhost:8000
     deploy:
         permissions:
           contents: write
@@ -52,3 +52,15 @@ jobs:
               uses: linus-jansson/github-pages-deploy-action@v4
               with:
                 folder: src # The folder the action should deploy.
+
+    test_availability:
+        needs: [ deploy]
+        runs-on: ubuntu-latest
+        steps:
+            - name: install dependencies
+              run: |
+                python -m pip install -r tests_requirements.txt
+                python -m pip install live-server
+                sudo apt-get install -y chromium-browser
+            - name: Run Tests scripts on live website
+              run: python tests/test_website.py https://ntig-uppsala.github.io/pizzeria-rafiki/

@@ -1,11 +1,11 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
 import unittest
+import sys
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.common.by import By
-
 
 class CheckSiteAvailability(unittest.TestCase):
     """
@@ -22,7 +22,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser = webdriver.Chrome(driver_path, options=chrome_options) # Initiliserar chrome drivern från den nerladdade
         self.addCleanup(self.browser.quit) # stäng webläsaren när testen är klar
 
-        self.website_url = "http://127.0.0.1:8000/" # Urln som kommer användas
+        self.website_url = sys.argv[1] # url som ska testas hämtas som argument från command line vid körning
 
     # Test som kollar ifall Pizzeria rafiki finns med i titeln på sidan pizzeria-rafiki.github.io
     def test_page_title(self):
@@ -42,7 +42,6 @@ class CheckSiteAvailability(unittest.TestCase):
 
         for info_value in information.values():
             self.assertIn(info_value, self.browser.find_element(By.TAG_NAME, "body").text)
-
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
 import unittest
 import sys
+from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -52,7 +53,13 @@ class CheckSiteAvailability(unittest.TestCase):
         # Check each values from the dict if they are present on the webpage
         for info_value in information.values():
             self.assertIn(info_value, body_text)
-
+            
+    # Test to check for background image in css
+    def test_check_for_background_image(self):
+        self.browser.get(self.website_url)
+        # Locate element with class .BackgroundImage and get its background-image css value
+        css_background_value = self.browser.find_element(By.CLASS_NAME, "BackgroundImage").value_of_css_property("background-image") 
+        self.assertIn('background.jpg', css_background_value) # test if background.jpg is in the value of css property background-image
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

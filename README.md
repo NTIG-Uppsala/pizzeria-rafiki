@@ -1,16 +1,31 @@
 # pizzeria-rafiki
 ![Site deployer](https://github.com/NTIG-Uppsala/pizzeria-rafiki/actions/workflows/deployment.yml/badge.svg)
 
-## Testing
-Unittests används för att testa hemsidan, dess tillgänglighet och delar av hemsidan såsom innehållet. Skripten i `src/tests/` installerar automatiskt den senaste chrome drivern som behövs för att kunna simulera en webläsare. För att installerar man de dependencies som behövs så behöver man `python 3.10+` och sedan installera genom att köra `python -m pip install -r tests_requirements.txt`.
 
-Testerna kan även köras som github action för att automatisera körninge. [Se här för mer info](https://github.com/NTIG-Uppsala/pizzeria-rafiki/tree/main/.github/workflows)
+## [Länk till live sida](https://ntig-uppsala.github.io/pizzeria-rafiki/)
 
-## Uppdatera dependencies
-Skulle det installera nya biliotek eller något behöver uppdateras så kan man använda [pipreqs](https://pypi.org/project/pipreqs/) för att generera en dependencies fil med de bibliotek som användas i skriptet.
+## Github Workflows
+Efter en ändring av koden så körs en [Github Workflow](https://github.com/NTIG-Uppsala/pizzeria-rafiki/tree/main/.github/workflows/deployment.yml). Den validerar koden, testar koden och sedan uppdaterar den publicerade sidan ifall valideringen och testerna gått igenom. Samt testar ifall den publicerade sidan fungerar som den ska.
 
-## HTML validering
-En [github action](https://github.com/linus-jansson/html5validator-action) validerar koden vid varje push & pull-request
+Nedan finns steg för steg hur det fungerar:
+### Steg 1. Valideringen
+En [github action](https://github.com/linus-jansson/html5validator-action) validerar alla CSS- och HTML-filer i mappen `src/` och sedan avslutar med ett *pass* eller *fail*.
 
-## Website deployment
-Hemsidan deployas med hjälp av [en action](https://github.com/linus-jansson/github-pages-deploy-action). Om någon action misslyckas kommer inte senaste versionen av sidan publiceras.
+### Steg 2. Testning
+Sidan startas lokalt på githubs servrar.
+
+För att testa hemsidan används biblioteket Selenium kombinerat med pythons inbyggda bibliotek `unittest`. Selenium laddar in hemsidan på den lokala servern (se `src/tests/test_website.py` för innehållet av skriptet) och kör tester av innehållet på hemsidan i form av *unit tests*.
+
+Pythonskriptet returnerar om testerna har gått igenom med ett *fail* eller *pass*.
+
+### Steg 3. Publicering av hemsidan
+För att den nya sidan ska publiceras måste `Steg 1` och `Steg 2` passera. Om testerna godkänns körs sista [*Actionen*](https://github.com/linus-jansson/github-pages-deploy-action) som tar all källkod i `src/` och skapar en ny branch `gh-pages` (om den inte finns).
+
+När Github känner av att `gh-pages` branchen uppdateras startar den en publicering av den nya hemsidan.
+### Steg 4. Testa att hemsidan är publicerad
+När hemsidan har publicerats i `steg 3` körs samma tester som på `steg 2` på den publicerade hemsidan. Detta för att se att den lyckades publicera och att allt innehåll finns med.
+
+### Uppdatera & Ladda ner dependencies lokalt
+Skulle det installeras nya biliotek, alternativt att befintliga bibliotek uppdateras behöver `tests_requirements.txt` uppdateras. Detta gör man lättast genom att använda [pipreqs](https://pypi.org/project/pipreqs/) för att generera en fil med de bibliotek och versionsnummer som behövs.
+
+För att installera de biblioteken som krävs skriver man `python -m pip install -r tests_requirements.txt`  

@@ -9,25 +9,25 @@ from selenium.webdriver.common.by import By
 
 class CheckSiteAvailability(unittest.TestCase):
     """
-        Om skriptet failar första test ("test_page_title")
-        så betyder det att hemsidan inte är online och körs
+        Class to handle the tests for the website
+        The class also inherit python's 'unittest.TestCase' to run the test methods 
     """
+    website_url = "http://localhost:8000/" # Standard URL placeholder 
+
     def setUp(self):
+        driver_path = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() # Initializes the driver to memory
 
-        driver_path = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() # installerar drivern i minnet
+        # Run the browser with no GUI as it needs to be able to run as a github action
+        chrome_options = Options()
+        chrome_options.add_argument("--headless") 
 
-        chrome_options = Options() # 
-        chrome_options.add_argument("--headless") # 
+        self.browser = webdriver.Chrome(driver_path, options=chrome_options) # Initializes the browser instance with the driver
+        self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
 
-        self.browser = webdriver.Chrome(driver_path, options=chrome_options) # Initiliserar chrome drivern från den nerladdade
-        self.addCleanup(self.browser.quit) # stäng webläsaren när testen är klar
-
-        self.website_url = sys.argv[1] # url som ska testas hämtas som argument från command line vid körning
-
-    # Test som kollar ifall Pizzeria rafiki finns med i titeln på sidan pizzeria-rafiki.github.io
+    # Test to check if "pizzeria rafiki" is in the <title> of the page
     def test_page_title(self):
         self.browser.get(self.website_url)
-        self.assertIn('Pizzeria Rafiki', self.browser.title) # Testa ifall "Pizzera Rafiki" är med i titlen på browsern
+        self.assertIn('Pizzeria Rafiki', self.browser.title) 
 
     def test_check_for_company_info(self):
         information = {
@@ -40,9 +40,17 @@ class CheckSiteAvailability(unittest.TestCase):
 
         self.browser.get(self.website_url)
 
+        body_text = self.browser.find_element(By.TAG_NAME, "body").text # Grab all text from the page body
+
+        # Check each values from the dict if they are present on the webpage
         for info_value in information.values():
-            self.assertIn(info_value, self.browser.find_element(By.TAG_NAME, "body").text)
+            self.assertIn(info_value, body_text)
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity=2)
+    if len(sys.argv) > 1:
+        CheckSiteAvailability.website_url = sys.argv.pop() # Change url to passed in argument
+        unittest.main(verbosity=2) # Run unit tests
+    else:
+        # Throw error if no arguments when running python script
+        raise Exception("No url passed in as arugment")

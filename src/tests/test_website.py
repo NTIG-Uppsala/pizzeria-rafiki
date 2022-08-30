@@ -13,6 +13,7 @@ class CheckSiteAvailability(unittest.TestCase):
         så betyder det att hemsidan inte är online och körs
     """
     def setUp(self):
+
         driver_path = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() # installerar drivern i minnet
 
         chrome_options = Options() # 
@@ -21,9 +22,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser = webdriver.Chrome(driver_path, options=chrome_options) # Initiliserar chrome drivern från den nerladdade
         self.addCleanup(self.browser.quit) # stäng webläsaren när testen är klar
 
-        self.website_url = "https://ntig-uppsala.github.io/pizzeria-rafiki/src/" # Urln som kommer användas
-        # self.website_url = "http://127.0.0.1:5500/src/" # Urln som kommer användas
-
+        self.website_url = "http://127.0.0.1:8000/" # Urln som kommer användas
 
     # Test som kollar ifall Pizzeria rafiki finns med i titeln på sidan pizzeria-rafiki.github.io
     def test_page_title(self):

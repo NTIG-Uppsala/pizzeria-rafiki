@@ -32,10 +32,17 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_company_info(self):
         information = {
             "company_name": "Pizzeria Rafiki",
-            "telefon_number": "Telefonnummer: 123-456 78 90",
-            "adress": "Adress: Flenvägen 55",
-            "open_hours": "Öppet: 11-22",
-            "mail_adress": "Mailadress: kontakt@rafiki.se"
+            "telefon_number": "Telefonnummer: 0630-555-555",
+            "adress": "Adress: Fjällgatan 32H 981 39 Flen",
+            "open_hours": "Öppet:",
+            "monday": "Måndagar 10-22",
+            "tuesday": "Tisdagar 10-22",
+            "wednesday": "Onsdagar 10-22",
+            "thusday": "Torsdagar 10-22",
+            "friday": "Fredagar 10-23",
+            "saturday": "Lördagar 12-23",
+            "sunday": "Söndagar 12-20",
+            "mail_adress": "Mailadress: info@rafiki.se"
         }
 
         self.browser.get(self.website_url)

@@ -1,0 +1,11 @@
+.HeaderText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}

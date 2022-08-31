@@ -1,7 +1,9 @@
+* {
+  max-width: 100%;
+}
+
 html, body {
   height: 100%;
-  display: flex;
-  flex-direction: column;
   margin: 0;
   padding: 0;
 
@@ -16,11 +18,12 @@ html, body {
   background-size: cover;
 }
 
-
 .HeaderText {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  color: whitesmoke;
 }
 
 .center {
@@ -54,10 +57,42 @@ html, body {
 }
 
 footer {
-
   display: flex;
+  width: 100%;
   background-color: grey;
   flex-direction: row;
   justify-content: center;
   margin-top: auto;
+}
+
+/* If the screen size is 999px or more, set the font-size of <div> to 80px */
+@media only screen and (min-width: 999px) {
+    .ProductImages {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+}
+
+/* If the screen size is 1000px or less, set the font-size of <div> to 30px */
+@media only screen and (max-width: 1000px) {
+  .ProductImages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+}
+
+
+.ProductImages img {
+  height: 25vh;
+  width: auto;
+  
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 3px;
+  margin: 5px;
 }

@@ -8,6 +8,15 @@ html, body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+header {
+  background-image: url('../images/background.jpg');
+  height: 25vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .HeaderText {
   display: flex;
   justify-content: center;

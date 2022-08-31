@@ -126,7 +126,7 @@ class CheckSiteAvailability(unittest.TestCase):
             "Margarita", "ost", "80 kr",
             "Hawaii", "skinka, ananas", "90 kr",
             "Vesuvio", "skinka", "85 kr", 
-            "Extra topping", "5.00 kr",
+            "Extra topping", "5 kr",
             "Pompei", "bacon, rödlök, ägg, currie", "90 kr",
             "La Casa", "championer, räkor, skinka", "95 kr"
         ]

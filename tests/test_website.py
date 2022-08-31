@@ -60,7 +60,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
         
         # Locate element with class .BackgroundImage and get its background-image css value
-        css_background_value = self.browser.find_element(By.CLASS_NAME, "BackgroundImage")
+        css_background_value = self.browser.find_element(By.CLASS_NAME, "HeaderImage")
 
         # test if background.jpg is in the value of css property background-image
         self.assertIn('background.jpg', css_background_value.value_of_css_property("background-image") ) 

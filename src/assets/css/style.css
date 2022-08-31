@@ -8,7 +8,7 @@ html, body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-header {
+.HeaderImage {
   background-image: url('../images/background.jpg');
   height: 25vh;
   background-position: center;

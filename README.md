@@ -5,7 +5,7 @@
 ## [Länk till live sida](https://ntig-uppsala.github.io/pizzeria-rafiki/)
 
 ## GitHub Workflows
-Efter en ändring av koden körs en [GitHub Workflow](https://github.com/NTIG-Uppsala/pizzeria-rafiki/tree/main/.github/workflows/deployment.yml). Den validerar koden, testar koden och uppdaterar sedan den publicerade sidan ifall valideringen och testerna gått igenom samt testar ifall den publicerade sidan fungerar som den ska.
+Efter en ändring av koden körs en [GitHub Workflow](https://github.com/NTIG-Uppsala/pizzeria-rafiki/tree/main/.github/workflows/deployment.yml). Den validerar koden, testar koden och uppdaterar den publicerade sidan ifall valideringen och testerna gått igenom samt testar ifall den publicerade sidan fungerar som den ska.
 
 Nedan finns steg för steg hur det fungerar:
 ### Steg 1. Validering

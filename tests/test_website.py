@@ -65,6 +65,24 @@ class CheckSiteAvailability(unittest.TestCase):
         # test if background.jpg is in the value of css property background-image
         self.assertIn('background.jpg', css_background_value.value_of_css_property("background-image") ) 
 
+    def test_check_for_product_image1(self):
+        self.browser.get(self.website_url)
+        
+        # Locate element and get its product-image value
+        product_element1 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod1.jpg"]')
+
+        # test if prod1.jpg is on the website 
+        self.assertIn('prod1.jpg', product_element1.get_attribute('src'))
+
+    def test_check_for_product_image2(self):
+        self.browser.get(self.website_url)
+        
+        # Locate element with class .BackgroundImage and get its background-image css value
+        product_element2 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod2.jpg"]')
+
+        # test if background.jpg is in the value of css property background-image
+        self.assertIn('prod2.jpg', product_element2.get_attribute('src'))
+
     def read_svg_data(self, file_name):
         # Get the path to the file
         icon_path = Path(__file__).resolve().parents[1] / Path(f'src/assets/images/{file_name}')

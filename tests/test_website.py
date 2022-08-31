@@ -101,7 +101,25 @@ class CheckSiteAvailability(unittest.TestCase):
 
         self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
            
-    
+    def test_check_for_products(self):
+        products = [
+            "Capricciosa", "skinka, championer", "90 kr", 
+            "Calzone", "inbakad, skinka", "85 kr", 
+            "Margarita", "ost", "80 kr",
+            "Hawaii", "skinka, ananas", "90 kr",
+            "Vesuvio", "skinka", "85 kr", 
+            "Extra topping", "5.00 kr",
+            "Pompei", "bacon, rödlök, ägg, currie", "90 kr",
+            "La Casa", "championer, räkor, skinka", "95 kr"
+        ]
+
+        self.browser.get(self.website_url)
+
+        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from the page body
+
+        # Check each values from the dict if they are present on the webpage
+        for product in products:
+            self.assertIn(product, products_table)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

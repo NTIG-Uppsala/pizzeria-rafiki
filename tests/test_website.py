@@ -1,6 +1,7 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
 import unittest
 import sys
+import re
 from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -53,13 +54,54 @@ class CheckSiteAvailability(unittest.TestCase):
         # Check each values from the dict if they are present on the webpage
         for info_value in information.values():
             self.assertIn(info_value, body_text)
-            
+
     # Test to check for background image in css
     def test_check_for_background_image(self):
         self.browser.get(self.website_url)
+        
         # Locate element with class .BackgroundImage and get its background-image css value
-        css_background_value = self.browser.find_element(By.CLASS_NAME, "BackgroundImage").value_of_css_property("background-image") 
-        self.assertIn('background.jpg', css_background_value) # test if background.jpg is in the value of css property background-image
+        css_background_value = self.browser.find_element(By.CLASS_NAME, "BackgroundImage")
+
+        # test if background.jpg is in the value of css property background-image
+        self.assertIn('background.jpg', css_background_value.value_of_css_property("background-image") ) 
+
+    def read_svg_data(self, file_name):
+        # Get the path to the file
+        icon_path = Path(__file__).resolve().parents[1] / Path(f'src/assets/images/{file_name}')
+        
+        # Reads the svg data from the the icon_path
+        with open(icon_path, 'r+') as file:
+            # Converts the data to one line, replacing newlines and multiple whitespaces with no space
+            file_data = ''.join(file.readlines()).replace('\n', '')
+            
+            return file_data
+
+    def test_check_for_facebook_icon(self):
+        self.browser.get(self.website_url)
+        facebook_css_element = self.browser.find_element(By.CLASS_NAME, "FacebookIcon")
+        
+        file_data = self.read_svg_data('facebook-circle-line.svg')
+
+        self.assertIn(file_data, facebook_css_element.value_of_css_property("background-image").replace('\\', ''))
+            
+    def test_check_for_instagram_icon(self):
+        self.browser.get(self.website_url)
+        instagram_css_element = self.browser.find_element(By.CLASS_NAME, "InstagramIcon")
+        
+        file_data = self.read_svg_data('instagram-line.svg')
+
+        self.assertIn(file_data, instagram_css_element.value_of_css_property("background-image").replace('\\', ''))
+           
+
+    def test_check_for_twitter_icon(self):
+        self.browser.get(self.website_url)
+        twitter_css_element = self.browser.find_element(By.CLASS_NAME, "TwitterIcon")
+        
+        file_data = self.read_svg_data('twitter-line.svg')
+
+        self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
+           
+    
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

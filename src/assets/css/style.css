@@ -10,6 +10,19 @@ html, body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.CenterLogo {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#HeaderLogo {
+  width: 7%;
+  margin: 0px;
+  
+}
+
 .HeaderImage {
   background-image: url('../images/background.jpg');
   height: 25vh;

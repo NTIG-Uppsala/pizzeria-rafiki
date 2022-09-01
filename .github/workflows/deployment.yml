@@ -1,5 +1,5 @@
 
-name: Site deployment
+name: Validation, testing and site deployment
   
 on: 
     push: 
@@ -23,26 +23,26 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout Repo
+            - name: Checkout Repo # Checkout repository
               uses: actions/checkout@v2
-            - name: Setup Python environment
+            - name: Setup Python environment # Setup python's enviroment
               uses: actions/setup-python@v4
               with:
                 python-version: '3.10' 
-            - name: install dependencies
+            - name: install dependencies # Installs local dependencies for the workflow
               run: |
                 python -m pip install -r tests_requirements.txt
                 sudo apt-get install -y firefox
-            - name: start live server
+            - name: start live server # Start a live-server for testing the webpage content
               run: |
                 cd src/
-                python -m http.server &
+                python -m http.server & 
             - name: Run Tests scripts on localhost
-              run: python tests/test_website.py http://localhost:8000
+              run: python tests/test_website.py http://localhost:8000 # Run the python script on the local webserver
     deploy:
         permissions:
           contents: write
-        needs: [ validate_code, run_tests ]
+        needs: [ validate_code, run_tests ] # Wait before running "deploy" until "validate_code" and "run_tests" are done
         runs-on: ubuntu-latest
 
         steps:
@@ -51,10 +51,11 @@ jobs:
             - name: Deploy website 🚀
               uses: linus-jansson/github-pages-deploy-action@v4
               with:
-                folder: src # The folder the action should deploy.
+                folder: src # The folder that should be used in the deployment
 
     test_availability:
         needs: [ deploy ]
+        
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Repo
@@ -69,4 +70,4 @@ jobs:
                 python -m pip install live-server
                 sudo apt-get install -y firefox
             - name: Run Tests scripts on live website
-              run: python tests/test_website.py https://ntig-uppsala.github.io/pizzeria-rafiki/
+              run: python tests/test_website.py https://ntig-uppsala.github.io/pizzeria-rafiki/ # Tests the live website

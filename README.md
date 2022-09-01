@@ -58,3 +58,16 @@ webdriver_manager==3.8.3
 #### Tester
 - Python
 
+## Definition of Done 
+- 50% > av närvarande måste godkänna och förstå
+- Koden incheckad och klar på GitHub
+- Kommentarer klara
+- Dokumentation
+- Tester klara och koden klarar testerna
+- Redo för presentation
+- En färdig produkt:
+    - Det ska funka.
+    - Inga felmeddelanden.
+    - Inga kompileringsfel.
+    - användbart gränssnitt.
+

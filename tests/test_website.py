@@ -57,7 +57,6 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_background_image(self):
         self.browser.get(self.website_url)
         
-        # Locate element with class .BackgroundImage and get its background-image css value
         css_background_value = self.browser.find_element(By.CLASS_NAME, "HeaderImage")
 
         # test if background.jpg is in the value of css property background-image
@@ -66,7 +65,7 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_product_image1(self):
         self.browser.get(self.website_url)
         
-        # Locate element and get its product-image value
+        # Locate element and get its product image value
         product_element1 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod1.jpg"]')
 
         # test if prod1.jpg is on the website 
@@ -75,10 +74,10 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_product_image2(self):
         self.browser.get(self.website_url)
         
-        # Locate element with class .BackgroundImage and get its background-image css value
+        
         product_element2 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod2.jpg"]')
 
-        # test if background.jpg is in the value of css property background-image
+       
         self.assertIn('prod2.jpg', product_element2.get_attribute('src'))
 
     def read_svg_data(self, file_name):
@@ -154,4 +153,4 @@ if __name__ == '__main__':
         unittest.main(verbosity=2) # Run unit tests
     else:
         # Throw error if no arguments when running python script
-        raise Exception("No url passed in as arugment")
+        raise Exception("No url passed in as argument")

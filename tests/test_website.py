@@ -139,6 +139,17 @@ class CheckSiteAvailability(unittest.TestCase):
         for product in products:
             self.assertIn(product, products_table)
 
+    def test_check_for_logo(self):
+        self.browser.get(self.website_url)
+
+        # Gets header logo element and favicon element
+        favicon_element = self.browser.find_element(By.XPATH, "xpath[@rel='icon']")
+        header_icon_element = self.browser.find_element(By.ID, "HeaderLogo")
+
+        # Checks if correct logo file is in src and href
+        self.assertIn('rafikilogofavicon.png', favicon_element.get_attribute('href'))
+        self.assertIn('rafikilogo.png', header_icon_element.get_attribute('src'))
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         CheckSiteAvailability.website_url = sys.argv.pop() # Change url to passed in argument

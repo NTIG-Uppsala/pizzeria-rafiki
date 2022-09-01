@@ -29,3 +29,32 @@ När hemsidan har publicerats i `steg 3` körs samma tester som i `steg 2` på d
 Skulle det installeras nya bibliotek, alternativt att befintliga bibliotek uppdateras behöver `tests_requirements.txt` uppdateras. Detta gör man lättast genom att använda [pipreqs](https://pypi.org/project/pipreqs/) för att generera en fil med de bibliotek och versionsnummer som behövs.
 
 För att installera de bibliotek som krävs skriver man `python -m pip install -r tests_requirements.txt`.
+
+## Utvecklingsmiljö
+Utdrag från `tests_requirements.txt`:
+```
+selenium==4.4.3
+webdriver_manager==3.8.3
+```
+
+## Kodningsstandard
+- Fyra mellanrum per tab
+- Bara gemener för *element och attributes* i HTML
+- Skriv all CSS i ett eget stylesheetdokument
+- Variabelnamn:
+    - snake_case ( *eg hello_world_test_variabel* )
+- Klassnamn:
+    - pascal case ( *eg HelloWorldTestClass* )
+- CSS klass och IDn:
+    - pascal case ( *eg HelloWorldTestClass* )
+
+## Programmeringsspråk
+#### GitHub
+- Markdown filer
+- YAML för GitHub workflows
+#### Hemsida
+- Frontend:
+    - Html, css
+#### Tester
+- Python
+

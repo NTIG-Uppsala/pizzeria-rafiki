@@ -121,7 +121,7 @@ class CheckSiteAvailability(unittest.TestCase):
         products = [
             "Capricciosa", "skinka, championer", "90 kr", 
             "Calzone", "inbakad, skinka", "85 kr", 
-            "Margarita", "ost", "80 kr",
+            "Margherita", "ost", "80 kr",
             "Hawaii", "skinka, ananas", "90 kr",
             "Vesuvio", "skinka", "85 kr", 
             "Extra topping", "5 kr",

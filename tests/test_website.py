@@ -32,9 +32,9 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_company_info(self):
         information = {
             "company_name": "Pizzeria Rafiki",
-            "telefon_number": "Telefonnummer: 0630-555-555",
+            "phone_number": "Telefonnummer: 0630-555-555",
             "adress": "Adress: Fjällgatan 32H 981 39 Flen",
-            "open_hours": "Öppet:",
+            "open": "Öppet:",
             "monday": "Måndagar 10-22",
             "tuesday": "Tisdagar 10-22",
             "wednesday": "Onsdagar 10-22",
@@ -91,6 +91,7 @@ class CheckSiteAvailability(unittest.TestCase):
             
             return file_data
 
+    # Three tests to check if the correct icons are used on the webpage
     def test_check_for_facebook_icon(self):
         self.browser.get(self.website_url)
         facebook_css_element = self.browser.find_element(By.CLASS_NAME, "FacebookIcon")
@@ -106,7 +107,6 @@ class CheckSiteAvailability(unittest.TestCase):
         file_data = self.read_svg_data('instagram-line.svg')
 
         self.assertIn(file_data, instagram_css_element.value_of_css_property("background-image").replace('\\', ''))
-           
 
     def test_check_for_twitter_icon(self):
         self.browser.get(self.website_url)
@@ -117,6 +117,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
            
     def test_check_for_products(self):
+        # List of products
         products = [
             "Capricciosa", "skinka, championer", "90 kr", 
             "Calzone", "inbakad, skinka", "85 kr", 
@@ -130,9 +131,9 @@ class CheckSiteAvailability(unittest.TestCase):
 
         self.browser.get(self.website_url)
 
-        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from the page body
+        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from products <table>
 
-        # Check each values from the dict if they are present on the webpage
+        # Check each values from the list if they are present on the webpage
         for product in products:
             self.assertIn(product, products_table)
 

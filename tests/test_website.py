@@ -141,7 +141,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
 
         # Gets header logo element and favicon element
-        favicon_element = self.browser.find_element(By.XPATH, "xpath[@rel='icon']")
+        favicon_element = self.browser.find_element(By.XPATH, "//link[@type='image/x-icon']")
         header_icon_element = self.browser.find_element(By.ID, "HeaderLogo")
 
         # Checks if correct logo file is in src and href

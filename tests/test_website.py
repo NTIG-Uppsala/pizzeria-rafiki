@@ -148,6 +148,16 @@ class CheckSiteAvailability(unittest.TestCase):
         self.assertIn('rafikilogofavicon.png', favicon_element.get_attribute('href'))
         self.assertIn('rafikilogo.png', header_icon_element.get_attribute('src'))
 
+    def test_for_large_images(self):
+        # Get path for image folder
+        image_path = Path(__file__).resolve().parents[1] / Path('src/assets/images/')
+        
+        # Assert check for images larger than 1Mb
+        for image in image_path.glob('**/*.*'):
+            image_size = Path(image).stat().st_size
+            print("Image path: {} \t image size: {}".format(image, image_size))
+            self.assertGreater(1e6, image_size)
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         CheckSiteAvailability.website_url = sys.argv.pop() # Change url to passed in argument

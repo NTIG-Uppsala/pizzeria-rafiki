@@ -97,5 +97,4 @@ jobs:
           with:
             source: https://ntig-uppsala.github.io/pizzeria-rafiki/
             destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
-            full-page: true
             width: ${{ matrix.width }}

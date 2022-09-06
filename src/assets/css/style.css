@@ -135,6 +135,12 @@ main > :last-child {
   justify-content: center;
 }
 
+.Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .Openhours {
     display: flex;
     justify-content: center;

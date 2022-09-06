@@ -87,7 +87,6 @@ jobs:
           matrix:
             os: [ubuntu-latest, macos-latest, windows-latest] # Test on ubuntu, windows, and mac os
             width: [2560, 1366, 1920, 360, 768] # Multiple resolutions
-            height: [1440, 768, 1080, 640, 1024]
             
         runs-on: ${{ matrix.os }}
 
@@ -100,4 +99,3 @@ jobs:
             destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
             full-page: true
             width: ${{ matrix.width }}
-            height: ${{ matrix.height }}

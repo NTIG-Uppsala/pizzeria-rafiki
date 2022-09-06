@@ -30,6 +30,9 @@ Skulle det installeras nya bibliotek, alternativt att befintliga bibliotek uppda
 
 För att installera de bibliotek som krävs skriver man `python -m pip install -r tests_requirements.txt`.
 
+### Workflows lokalt
+[Följ installations guide](https://github.com/nektos/act)
+
 ## Utvecklingsmiljö
 Utdrag från `tests_requirements.txt`:
 ```
@@ -57,4 +60,17 @@ webdriver_manager==3.8.3
     - Html, css
 #### Tester
 - Python
+
+## Definition of Done 
+- 50% > av närvarande måste godkänna och förstå
+- Koden incheckad och klar på GitHub
+- Kommentarer klara
+- Dokumentation
+- Tester klara och koden klarar testerna
+- Redo för presentation
+- En färdig produkt:
+    - Det ska funka.
+    - Inga felmeddelanden.
+    - Inga kompileringsfel.
+    - användbart gränssnitt.
 

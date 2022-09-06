@@ -59,6 +59,8 @@ main {
   right: 0;
 }
 
+
+
 header {
   display: flex;
   height: 150px;
@@ -66,14 +68,26 @@ header {
   top: 0px;
   left: 0px;
 
-  justify-content: center;
-  
+  flex-direction: column;
+
   z-index: 99999;
   position: sticky;
   color: white;
   background-color: #000000;
-  
+}
 
+.Logo {
+  height: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2%;
+}
+
+nav {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
 }
 
 footer {
@@ -92,9 +106,10 @@ footer {
   z-index: 9999;
   font-size: 30px;
   
-  background-color: #1b1b1b;
+  padding-top: 10px;
+  padding-bottom: 20px;
 
-  padding: 10px;
+  background-color: #1b1b1b;
 
 }
 
@@ -157,8 +172,7 @@ main > :last-child {
   footer {
     flex-direction: column;
     position: relative;
-    padding-top: 10px;
-    padding-bottom: 20px;
+
     height: 100%;
   }
 

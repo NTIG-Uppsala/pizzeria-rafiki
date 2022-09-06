@@ -86,7 +86,9 @@ jobs:
         strategy:
           matrix:
             os: [ubuntu-latest, macos-latest, windows-latest] # Test on ubuntu, windows, and mac os
-            width: [1080, 768, 640, 1024] # Multiple resolutions
+            width: [2560, 1366, 1920, 360, 768] # Multiple resolutions
+            height: [1440, 768, 1080, 640, 1024]
+            
         runs-on: ${{ matrix.os }}
 
         steps:
@@ -96,4 +98,6 @@ jobs:
           with:
             source: https://ntig-uppsala.github.io/pizzeria-rafiki/
             destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
+            full-page: true
             width: ${{ matrix.width }}
+            height: ${{ matrix.height }}

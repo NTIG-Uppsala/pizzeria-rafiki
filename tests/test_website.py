@@ -1,12 +1,11 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
 import unittest
 import sys
-import re
 from pathlib import Path
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.utils import ChromeType
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 
 class CheckSiteAvailability(unittest.TestCase):
@@ -17,13 +16,12 @@ class CheckSiteAvailability(unittest.TestCase):
     website_url = "http://localhost:8000/" # Standard URL placeholder 
 
     def setUp(self):
-        driver_path = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() # Initializes the driver to memory
 
         # Run the browser with no GUI as it needs to be able to run as a github action
-        chrome_options = Options()
-        chrome_options.add_argument("--headless") 
+        run_options = FirefoxOptions()
+        run_options.add_argument("--headless") 
 
-        self.browser = webdriver.Chrome(driver_path, options=chrome_options) # Initializes the browser instance with the driver
+        self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
         self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
 
     # Test to check if "pizzeria rafiki" is in the <title> of the page
@@ -34,9 +32,9 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_company_info(self):
         information = {
             "company_name": "Pizzeria Rafiki",
-            "telefon_number": "Telefonnummer: 0630-555-555",
+            "phone_number": "Telefonnummer: 0630-555-555",
             "adress": "Adress: Fjällgatan 32H 981 39 Flen",
-            "open_hours": "Öppet:",
+            "open": "Öppet:",
             "monday": "Måndagar 10-22",
             "tuesday": "Tisdagar 10-22",
             "wednesday": "Onsdagar 10-22",
@@ -59,7 +57,6 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_background_image(self):
         self.browser.get(self.website_url)
         
-        # Locate element with class .BackgroundImage and get its background-image css value
         css_background_value = self.browser.find_element(By.CLASS_NAME, "HeaderImage")
 
         # test if background.jpg is in the value of css property background-image
@@ -68,7 +65,7 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_product_image1(self):
         self.browser.get(self.website_url)
         
-        # Locate element and get its product-image value
+        # Locate element and get its product image value
         product_element1 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod1.jpg"]')
 
         # test if prod1.jpg is on the website 
@@ -77,10 +74,10 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_product_image2(self):
         self.browser.get(self.website_url)
         
-        # Locate element with class .BackgroundImage and get its background-image css value
+        
         product_element2 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod2.jpg"]')
 
-        # test if background.jpg is in the value of css property background-image
+       
         self.assertIn('prod2.jpg', product_element2.get_attribute('src'))
 
     def read_svg_data(self, file_name):
@@ -94,6 +91,7 @@ class CheckSiteAvailability(unittest.TestCase):
             
             return file_data
 
+    # Three tests to check if the correct icons are used on the webpage
     def test_check_for_facebook_icon(self):
         self.browser.get(self.website_url)
         facebook_css_element = self.browser.find_element(By.CLASS_NAME, "FacebookIcon")
@@ -109,7 +107,6 @@ class CheckSiteAvailability(unittest.TestCase):
         file_data = self.read_svg_data('instagram-line.svg')
 
         self.assertIn(file_data, instagram_css_element.value_of_css_property("background-image").replace('\\', ''))
-           
 
     def test_check_for_twitter_icon(self):
         self.browser.get(self.website_url)
@@ -120,10 +117,11 @@ class CheckSiteAvailability(unittest.TestCase):
         self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
            
     def test_check_for_products(self):
+        # List of products
         products = [
             "Capricciosa", "skinka, championer", "90 kr", 
             "Calzone", "inbakad, skinka", "85 kr", 
-            "Margarita", "ost", "80 kr",
+            "Margherita", "ost", "80 kr",
             "Hawaii", "skinka, ananas", "90 kr",
             "Vesuvio", "skinka", "85 kr", 
             "Extra topping", "5 kr",
@@ -133,9 +131,9 @@ class CheckSiteAvailability(unittest.TestCase):
 
         self.browser.get(self.website_url)
 
-        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from the page body
+        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from products <table>
 
-        # Check each values from the dict if they are present on the webpage
+        # Check each values from the list if they are present on the webpage
         for product in products:
             self.assertIn(product, products_table)
 
@@ -143,12 +141,22 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
 
         # Gets header logo element and favicon element
-        favicon_element = self.browser.find_element(By.XPATH, "xpath[@rel='icon']")
+        favicon_element = self.browser.find_element(By.XPATH, "//link[@type='image/x-icon']")
         header_icon_element = self.browser.find_element(By.ID, "HeaderLogo")
 
         # Checks if correct logo file is in src and href
         self.assertIn('rafikilogofavicon.png', favicon_element.get_attribute('href'))
         self.assertIn('rafikilogo.png', header_icon_element.get_attribute('src'))
+
+    def test_for_large_images(self):
+        # Get path for image folder
+        image_path = Path(__file__).resolve().parents[1] / Path('src/assets/images/')
+        
+        # Assert check for images larger than 1Mb
+        for image in image_path.glob('**/*.*'):
+            image_size = Path(image).stat().st_size
+            print("Image path: {} \t image size: {}".format(image, image_size))
+            self.assertGreater(1e6, image_size)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -156,4 +164,4 @@ if __name__ == '__main__':
         unittest.main(verbosity=2) # Run unit tests
     else:
         # Throw error if no arguments when running python script
-        raise Exception("No url passed in as arugment")
+        raise Exception("No url passed in as argument")

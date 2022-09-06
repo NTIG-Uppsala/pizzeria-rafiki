@@ -60,10 +60,13 @@ main {
 }
 
 header {
+  display: flex;
   height: 150px;
   width: 100%;
   top: 0px;
   left: 0px;
+
+  justify-content: center;
   
   z-index: 99999;
   position: sticky;
@@ -121,12 +124,14 @@ main > :last-child {
   width: 500px;
 
   max-width: 100%;
-  min-height: 70vh;
+  /* min-height: 70vh; */
 
   margin-top: 20px;
   margin-bottom: 20px;
   
-  padding: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
 
   background-color: #1b1b1be0;
 

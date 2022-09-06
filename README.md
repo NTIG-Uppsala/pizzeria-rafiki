@@ -30,6 +30,9 @@ Skulle det installeras nya bibliotek, alternativt att befintliga bibliotek uppda
 
 För att installera de bibliotek som krävs skriver man `python -m pip install -r tests_requirements.txt`.
 
+### Workflows lokalt
+[Följ installations guide](https://github.com/nektos/act)
+
 ## Utvecklingsmiljö
 Utdrag från `tests_requirements.txt`:
 ```

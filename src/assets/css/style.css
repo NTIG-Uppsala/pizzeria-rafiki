@@ -5,11 +5,20 @@
   font-style: normal;
 }
 
+:root {
+    --height-header: 150px;
+}
+
 * {
   max-width: 100vw;
   /* box-sizing: border-box; */
   scroll-behavior: smooth;
+    
+
 }
+
+
+
 
 html, body {
   margin: 0;
@@ -61,7 +70,7 @@ main {
 
 header {
   display: flex;
-  height: 150px;
+  height: var(--height-header);
   width: 100%;
   top: 0px;
   left: 0px;
@@ -138,6 +147,13 @@ main > :last-child {
   z-index: 3;
 
   justify-content: center;
+
+  /* 
+    Set the scroll margin top on all containers, also added 2.5em for som room over the element
+    Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
+  */
+  scroll-margin-top: calc(var(--height-header) + 2.5em);
+
 }
 
 .Wrapper {

@@ -21,9 +21,13 @@ html, body {
 
 }
 
-p, a, h1, h2, h3, h4 {
+p, a, h1, h2, h3, h4, th, td {
   font-family: 'BerlinSansFB';
   color: white;
+}
+
+p, a, th, td {
+    font-size: 20px;
 }
 
 main {
@@ -59,7 +63,7 @@ main {
 }
 
 header {
-  height: 250px;
+  height: 150px;
   width: 100%;
   top: 0px;
   left: 0px;
@@ -75,17 +79,32 @@ header {
 footer {
   display: flex;
   position: fixed;
-  bottom: 0px;
-  z-index: 9999;
-  width: 100%;
-  background-color: #1b1b1b;
+  
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  bottom: 0px;
+
+  z-index: 9999;
   font-size: 30px;
+  
+  background-color: #1b1b1b;
+
+  padding: 10px;
 
 }
 
+
+/* Inherit visability from parent to show icons */
+footer #Socials {
+  display: inherit;
+}
+
+/* Used for adding a dropshadow to elements */
 .BoxShadow {
   box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.7);
   -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.7);
@@ -96,24 +115,22 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  
   color: white;
 }
 
-.Container:first-child {
+/* First and last element of main should have a margin to not be covered from the header and footer */
+main:first-child {
   margin-top: 50px;
 }
 
-.Container:last-child {
+main:last-child {
   margin-bottom: 150px;
 }
 
 .Container {
-  /* word-wrap: break-word; */
   width: 500px;
 
   max-width: 100%;
-
   min-height: 70vh;
 
   margin-top: 20px;
@@ -124,22 +141,26 @@ footer {
   background-color: #1b1b1be0;
 
   z-index: 3;
+
+  justify-content: center;
 }
 
+/* Changes on large screens */
+@media (max-width: 768px) {
 
-@media (max-width: 570px) {
   .Container {
     max-width: 75vw;
   }
-  
+  /* Change layout of the footer to columns instead of row */
   footer {
     flex-direction: column;
     position: relative;
     padding-top: 10px;
     padding-bottom: 20px;
+    height: 100%;
   }
 
-  footer #socials {
+  footer #Socials {
     display: flex;
     flex-direction: row;
   }
@@ -167,10 +188,8 @@ footer {
 }
 
 
-
 table, th, td {
   border: 1px solid black;
   padding: 3px;
   margin: 5px;
 }
-

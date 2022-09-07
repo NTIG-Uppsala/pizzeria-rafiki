@@ -74,7 +74,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
         css_background_value = self.browser.find_element(By.CLASS_NAME, "Background")
         
-        wait = WebDriverWait(self.browser, 10)
+        wait = WebDriverWait(self.browser, 30)
         check_image_lambda = lambda _ : self.check_image(str(i))
 
         for i in range(1, 4):
@@ -93,31 +93,27 @@ class CheckSiteAvailability(unittest.TestCase):
             
             return file_data
 
-    # Three tests to check if the correct icons are used on the webpage
-    # TODO: HREF CHECK
-    def test_check_for_facebook_icon(self):
+    # Three tests to check if the correct icons are used on the webpage    
+    def test_check_for_socials(self):
         self.browser.get(self.website_url)
-        facebook_css_element = self.browser.find_element(By.CLASS_NAME, "FacebookIcon")
-        
-        file_data = self.read_svg_data('facebook-circle-line.svg')
 
-        self.assertIn(file_data, facebook_css_element.value_of_css_property("background-image").replace('\\', ''))
-            
-    def test_check_for_instagram_icon(self):
-        self.browser.get(self.website_url)
-        instagram_css_element = self.browser.find_element(By.CLASS_NAME, "InstagramIcon")
-        
-        file_data = self.read_svg_data('instagram-line.svg')
+        icons = [
+            ['FacebookIcon', 'facebook-circle-fill.svg'],
+            ['InstagramIcon', 'instagram-fill.svg'],
+            ['TwitterIcon', 'twitter-fill.svg']
+        ]
 
-        self.assertIn(file_data, instagram_css_element.value_of_css_property("background-image").replace('\\', ''))
+        for icon in icons:
+            print("current icon check:", icon[0])
 
-    def test_check_for_twitter_icon(self):
-        self.browser.get(self.website_url)
-        twitter_css_element = self.browser.find_element(By.CLASS_NAME, "TwitterIcon")
-        
-        file_data = self.read_svg_data('twitter-line.svg')
+            icon_element = self.browser.find_element(By.CLASS_NAME, icon[0])
 
-        self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
+            icon_css_value = icon_element.value_of_css_property("background-image").replace('\\', '')
+            icon_href = icon_element.get_attribute('href')
+
+            self.assertIn('NTIuppsala', icon_href)
+            self.assertIn(icon[1], icon_css_value)
+
     
     # TODO: FIX THIS
     def test_check_for_products(self):
@@ -137,8 +133,7 @@ class CheckSiteAvailability(unittest.TestCase):
 
         products_table = self.browser.find_element(By.ID, "Products")
         page_products_element = products_table.find_elements(By.TAG_NAME, "tr")
-        # print("products text:", products.text)
-        # print("PRODUCTS:", products_table)
+
         for product in page_products_element:
             pizza = product.get_attribute("data-pizza")
             listing_text = product.text
@@ -150,19 +145,16 @@ class CheckSiteAvailability(unittest.TestCase):
                 self.assertIn(" ".join(products[pizza]), listing_text)
                 # self.assertIn(products[pizza], listing_text)
 
-            print(pizza, type(pizza))
-            print(listing_text, type(listing_text))
-
     def test_check_for_logo(self):
         self.browser.get(self.website_url)
 
         # Gets header logo element and favicon element
         favicon_element = self.browser.find_element(By.XPATH, "//link[@type='image/x-icon']")
-        header_icon_element = self.browser.find_element(By.ID, "HeaderLogo")
+        header_icon_element = self.browser.find_element(By.CLASS_NAME, "Logo")
 
         # Checks if correct logo file is in src and href
         self.assertIn('rafikilogofavicon.png', favicon_element.get_attribute('href'))
-        self.assertIn('rafikilogo.png', header_icon_element.get_attribute('src'))
+        self.assertIn('rafikilogo.svg', header_icon_element.value_of_css_property('background-image'))
 
     def test_for_large_images(self):
         # Get path for image folder

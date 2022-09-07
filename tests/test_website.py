@@ -9,8 +9,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
 class CheckSiteAvailability(unittest.TestCase):
     """
         Class to handle the tests for the website
@@ -23,18 +21,14 @@ class CheckSiteAvailability(unittest.TestCase):
         # Run the browser with no GUI as it needs to be able to run as a github action
         run_options = FirefoxOptions()
         run_options.add_argument("--headless") 
-
-        #https://stackoverflow.com/questions/23231931/getting-console-log-output-from-firefox-with-selenium
-        d = DesiredCapabilities.FIREFOX
-        d['loggingPrefs'] = {'browser': 'ALL'}
         
         path_to_binaries = Path(__file__).resolve().parents[1] / Path('bin')
         if sys.platform == "win32":
             # # self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
-            self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver.exe')), options=run_options, capabilities=d) # Initializes the browser instance with the driver
+            self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver.exe')), options=run_options) # Initializes the browser instance with the driver
         else:
-            self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver')), options=run_options, capabilities=d) # Initializes the browser instance with the driver
-        
+            self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
+
         self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
 
     # Test to check if "pizzeria rafiki" is in the <title> of the page

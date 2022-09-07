@@ -69,7 +69,7 @@ main {
   bottom: 0;
   right: 0;
 
-  animation: slider 30s infinite linear;
+  animation: slider 30s infinite;
 }
 
 @keyframes slider {

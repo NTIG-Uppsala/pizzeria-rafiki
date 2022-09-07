@@ -39,44 +39,75 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
         self.assertIn('Pizzeria Rafiki', self.browser.title) 
 
-    # def test_check_for_company_info(self):
-    #     information = {
-    #         "company_name": "Pizzeria Rafiki",
-    #         "phone_number": "Telefonnummer: 0630-555-555",
-    #         "adress": "Adress: Fjällgatan 32H 981 39 Flen",
-    #         "open": "Öppet:",
-    #         "monday": "Måndagar 10-22",
-    #         "tuesday": "Tisdagar 10-22",
-    #         "wednesday": "Onsdagar 10-22",
-    #         "thusday": "Torsdagar 10-22",
-    #         "friday": "Fredagar 10-23",
-    #         "saturday": "Lördagar 12-23",
-    #         "sunday": "Söndagar 12-20",
-    #         "mail_adress": "Mailadress: info@rafiki.se"
-    #     }
+    def test_check_for_contact(self):
+        information = {
+            "phone_number": "0630-555-555",
+            "adress": "Fjällgatan 32H 981 39 Flen",
+            "mail_adress": "info@rafiki.se"
+        }
+        
+        self.browser.get(self.website_url)
+        
+        self.assertIn('mailto:info@rafiki.se', self.browser.find_element(By.ID, "MailAdress").get_attribute("href"))
+        self.assertIn('tel:0630-555-555', self.browser.find_element(By.ID, "PhoneNumber").get_attribute("href"))
 
-    #     self.browser.get(self.website_url)
+        body_text = self.browser.find_element(By.TAG_NAME, "body").text # Grab all text from the page body
 
-    #     body_text = self.browser.find_element(By.TAG_NAME, "body").text # Grab all text from the page body
+        # Check each values from the dict if they are present on the webpage
+        for info_value in information.values():
+            self.assertIn(info_value, body_text)
 
-    #     # Check each values from the dict if they are present on the webpage
-    #     for info_value in information.values():
-    #         self.assertIn(info_value, body_text)
+    
+    def test_check_for_open_hours(self):
+        self.browser.get(self.website_url)
+
+        # Dict of open hours
+        open_hours = {
+            "Monday": ["Måndagar","10-22"],
+            "Tuesday": ["Tisdagar","10-22"],
+            "Wedensday": ["Onsdagar","10-22"],
+            "Thursday": ["Torsdagar", "10-22"],
+            "Friday": ["Fredagar", "10-23"],
+            "Saturday": ["Lördagar", "12-23"],
+            "Sunday": ["Söndagar", "12-20"],
+        }
+
+        open_hours_table = self.browser.find_element(By.ID, "OpenHours")
+        open_hours_elements = open_hours_table.find_elements(By.TAG_NAME, "tr")
+
+        for open_hour in open_hours_elements:
+            current_day = open_hour.get_attribute("data-day")
+            listing_text = open_hour.text
+            
+            # If a tr has no data-day attribute skip it
+            if isinstance(current_day, NoneType):
+                continue
+            
+            if current_day in listing_text:
+                self.assertIn(" ".join(open_hours[current_day]), listing_text)
+
     
     def check_image(self, x):
+        # get the elment with the Background class name
         background_element = self.browser.find_element(By.CLASS_NAME, "Background")
-        css_element = background_element.value_of_css_property("background-image")
+
+        # Get the background-image value
+        css_value = background_element.value_of_css_property("background-image")
         
-        return "background{}.jpg".format(x) in css_element
+        # return if background{number}.jpg is in the css_value
+        return "background{}.jpg".format(x) in css_value
 
 
     def test_for_background(self):
         self.browser.get(self.website_url)
-        css_background_value = self.browser.find_element(By.CLASS_NAME, "Background")
         
+        # Initilize a WebDriverWait object passing in the browser driver and a 30 sec timeout
         wait = WebDriverWait(self.browser, 30)
+        
+        # lambda function to call the check_image method
         check_image_lambda = lambda _ : self.check_image(str(i))
 
+        # Itterate through all images 1-3 to check if they are shown on the page
         for i in range(1, 4):
             wait.until(check_image_lambda, "Timeout")
             print("Wait done")   
@@ -103,19 +134,22 @@ class CheckSiteAvailability(unittest.TestCase):
             ['TwitterIcon', 'twitter-fill.svg']
         ]
 
+        # For each icon in the icons list
         for icon in icons:
             print("current icon check:", icon[0])
 
+            # Get the icon[0] element from page
             icon_element = self.browser.find_element(By.CLASS_NAME, icon[0])
 
+            # Get the css property value background-image and href attribute
             icon_css_value = icon_element.value_of_css_property("background-image").replace('\\', '')
             icon_href = icon_element.get_attribute('href')
 
+            # Assert if correct link and correct svg path
             self.assertIn('NTIuppsala', icon_href)
             self.assertIn(icon[1], icon_css_value)
 
     
-    # TODO: FIX THIS
     def test_check_for_products(self):
         self.browser.get(self.website_url)
 
@@ -134,16 +168,19 @@ class CheckSiteAvailability(unittest.TestCase):
         products_table = self.browser.find_element(By.ID, "Products")
         page_products_element = products_table.find_elements(By.TAG_NAME, "tr")
 
+        # Loop through the products table element
         for product in page_products_element:
+            # Get the data-pizza attribute value
             pizza = product.get_attribute("data-pizza")
             listing_text = product.text
 
+            # If the data attribute is a None Type, skip to the next element
             if isinstance(pizza, NoneType):
                 continue
             
+            # Compare the Dictionary to the page value
             if pizza in listing_text:
                 self.assertIn(" ".join(products[pizza]), listing_text)
-                # self.assertIn(products[pizza], listing_text)
 
     def test_check_for_logo(self):
         self.browser.get(self.website_url)

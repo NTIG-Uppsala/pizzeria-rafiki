@@ -83,18 +83,16 @@ jobs:
     
     screenshot:
         name: Screenshots of website
+        runs-on: ubuntu-latest
+
         strategy:
           matrix:
-            os: [ubuntu-latest, macos-latest, windows-latest] # Test on ubuntu, windows, and mac os
-            width: [2560, 1366, 1920, 360, 768] # Multiple resolutions
-            
-        runs-on: ${{ matrix.os }}
+            width: [2560, 1366, 1920, 768] # Multiple resolutions
 
         steps:
-
-        - name: Screenshot Website
-          uses: linus-jansson/screenshot-website@v1.x
-          with:
-            source: https://ntig-uppsala.github.io/pizzeria-rafiki/
-            destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
-            width: ${{ matrix.width }}
+          - name: Screenshot Website
+            uses: linus-jansson/screenshot-website@v1.x
+            with:
+              source: https://ntig-uppsala.github.io/pizzeria-rafiki/
+              destination: screenshot-${{ matrix.width }}.png
+              width: ${{ matrix.width }}

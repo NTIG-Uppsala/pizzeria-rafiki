@@ -51,7 +51,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.assertIn('mailto:info@rafiki.se', self.browser.find_element(By.ID, "MailAdress").get_attribute("href"))
         self.assertIn('tel:0630-555-555', self.browser.find_element(By.ID, "PhoneNumber").get_attribute("href"))
 
-        body_text = self.browser.find_element(By.TAG_NAME, "body").text # Grab all text from the page body
+        body_text = self.browser.find_element(By.TAG_NAME, "body").text.replace('\n', ' ') # Grab all text from the page body
 
         # Check each values from the dict if they are present on the webpage
         for info_value in information.values():
@@ -201,7 +201,7 @@ class CheckSiteAvailability(unittest.TestCase):
         for image in image_path.glob('**/*.*'):
             image_size = Path(image).stat().st_size
             print("Image path: {} \t image size: {}".format(image, image_size))
-            self.assertGreater(1e6, image_size)
+            self.assertGreater(5e5, image_size)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

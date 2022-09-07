@@ -67,27 +67,30 @@ main {
   bottom: 0;
   right: 0;
 
-  animation: slider 10s infinite linear;
+  animation: slider 30s infinite linear;
 }
 
 @keyframes slider {
     0%   { 
-        opacity: 1;
-        background-image: url('../images/background.jpg');
-    }
-    20% {
         opacity: 0;
     }
-    40%  { 
+    2%, 31.3% {
         opacity: 1;
-        background-image: url('../images/prod1.jpg');
+        background-image: url('../images/background1.jpg');
     }
-    60%  {
+    33.3%  { 
         opacity: 0;
     }
-    80% { 
+    35.3%, 64.6%  {
         opacity: 1;
-        background-image: url('../images/prod2.jpg'); 
+        background-image: url('../images/background2.jpg');
+    }
+    66.6% { 
+        opacity: 0; 
+    }
+    68.6%, 98% {
+        opacity: 1;
+        background-image: url('../images/background3.jpg');
     }
     100% {
         opacity: 0;

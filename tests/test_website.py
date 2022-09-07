@@ -1,12 +1,15 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
+from types import NoneType
 import unittest
 import sys
+import time
 from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class CheckSiteAvailability(unittest.TestCase):
     """
@@ -21,7 +24,17 @@ class CheckSiteAvailability(unittest.TestCase):
         run_options = FirefoxOptions()
         run_options.add_argument("--headless") 
 
-        self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
+        #https://stackoverflow.com/questions/23231931/getting-console-log-output-from-firefox-with-selenium
+        d = DesiredCapabilities.FIREFOX
+        d['loggingPrefs'] = {'browser': 'ALL'}
+        
+        path_to_binaries = Path(__file__).resolve().parents[1] / Path('bin')
+        if sys.platform == "win32":
+            # # self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
+            self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver.exe')), options=run_options, capabilities=d) # Initializes the browser instance with the driver
+        else:
+            self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver')), options=run_options, capabilities=d) # Initializes the browser instance with the driver
+        
         self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
 
     # Test to check if "pizzeria rafiki" is in the <title> of the page
@@ -52,6 +65,29 @@ class CheckSiteAvailability(unittest.TestCase):
         # Check each values from the dict if they are present on the webpage
         for info_value in information.values():
             self.assertIn(info_value, body_text)
+
+    def test_for_background(self):
+        self.browser.get(self.website_url)
+        
+        css_background_value = self.browser.find_element(By.CLASS_NAME, "Background")
+
+        for _ in range(1, 3):    
+            time.sleep(1)
+            css_properties = css_background_value.value_of_css_property("background-image")
+
+            self.assertIn(f"background{_}", css_properties)
+        
+        
+        
+        # javascript_script = """
+        # """
+
+        # self.browser.execute_script("console.log('test')")
+
+        # print(self.browser.get_log('browser'))
+
+
+
 
     # Test to check for background image in css
     def test_check_for_background_image(self):
@@ -117,25 +153,38 @@ class CheckSiteAvailability(unittest.TestCase):
         self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
            
     def test_check_for_products(self):
-        # List of products
-        products = [
-            "Capricciosa", "skinka, championer", "90 kr", 
-            "Calzone", "inbakad, skinka", "85 kr", 
-            "Margherita", "ost", "80 kr",
-            "Hawaii", "skinka, ananas", "90 kr",
-            "Vesuvio", "skinka", "85 kr", 
-            "Extra topping", "5 kr",
-            "Pompei", "bacon, rödlök, ägg, curry", "90 kr",
-            "La Casa", "championer, räkor, skinka", "95 kr"
-        ]
-
         self.browser.get(self.website_url)
 
-        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from products <table>
+        # List of products
+        products = {
+            "Capricciosa": ["skinka, championer", "90 kr"], 
+            "Calzone": ["inbakad, skinka", "85 kr"], 
+            "Margherita": ["ost", "80 kr"],
+            "Hawaii": ["skinka, ananas", "90 kr"],
+            "Vesuvio": ["skinka", "85 kr"], 
+            "Extra topping": ["5 kr"],
+            "Pompei": ["bacon, rödlök, ägg, curry", "90 kr"],
+            "La Casa": ["championer, räkor, skinka", "95 kr"]
+        }
 
-        # Check each values from the list if they are present on the webpage
-        for product in products:
-            self.assertIn(product, products_table)
+        products_table = self.browser.find_element(By.ID, "Products")
+        page_products_element = products_table.find_elements(By.TAG_NAME, "tr")
+        # print("products text:", products.text)
+        # print("PRODUCTS:", products_table)
+        for product in page_products_element:
+            pizza = product.get_attribute("data-pizza")
+            listing_text = product.text
+
+            if isinstance(pizza, NoneType):
+                continue
+            
+            if pizza in listing_text:
+                for key, value in products.items():
+                    self.assertIn(" ".join(value), listing_text)
+                # self.assertIn(products[pizza], listing_text)
+
+            print(pizza, type(pizza))
+            print(listing_text, type(listing_text))
 
     def test_check_for_logo(self):
         self.browser.get(self.website_url)

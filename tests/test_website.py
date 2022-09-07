@@ -1,12 +1,16 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
+from types import NoneType
 import unittest
 import sys
+import time
 from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class CheckSiteAvailability(unittest.TestCase):
     """
@@ -20,8 +24,14 @@ class CheckSiteAvailability(unittest.TestCase):
         # Run the browser with no GUI as it needs to be able to run as a github action
         run_options = FirefoxOptions()
         run_options.add_argument("--headless") 
+        
+        path_to_binaries = Path(__file__).resolve().parents[1] / Path('bin')
+        if sys.platform == "win32":
+            # # self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
+            self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver.exe')), options=run_options) # Initializes the browser instance with the driver
+        else:
+            self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
 
-        self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
         self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
 
     # Test to check if "pizzeria rafiki" is in the <title> of the page
@@ -29,56 +39,48 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
         self.assertIn('Pizzeria Rafiki', self.browser.title) 
 
-    def test_check_for_company_info(self):
-        information = {
-            "company_name": "Pizzeria Rafiki",
-            "phone_number": "Telefonnummer: 0630-555-555",
-            "adress": "Adress: Fjällgatan 32H 981 39 Flen",
-            "open": "Öppet:",
-            "monday": "Måndagar 10-22",
-            "tuesday": "Tisdagar 10-22",
-            "wednesday": "Onsdagar 10-22",
-            "thusday": "Torsdagar 10-22",
-            "friday": "Fredagar 10-23",
-            "saturday": "Lördagar 12-23",
-            "sunday": "Söndagar 12-20",
-            "mail_adress": "Mailadress: info@rafiki.se"
-        }
+    # def test_check_for_company_info(self):
+    #     information = {
+    #         "company_name": "Pizzeria Rafiki",
+    #         "phone_number": "Telefonnummer: 0630-555-555",
+    #         "adress": "Adress: Fjällgatan 32H 981 39 Flen",
+    #         "open": "Öppet:",
+    #         "monday": "Måndagar 10-22",
+    #         "tuesday": "Tisdagar 10-22",
+    #         "wednesday": "Onsdagar 10-22",
+    #         "thusday": "Torsdagar 10-22",
+    #         "friday": "Fredagar 10-23",
+    #         "saturday": "Lördagar 12-23",
+    #         "sunday": "Söndagar 12-20",
+    #         "mail_adress": "Mailadress: info@rafiki.se"
+    #     }
 
-        self.browser.get(self.website_url)
+    #     self.browser.get(self.website_url)
 
-        body_text = self.browser.find_element(By.TAG_NAME, "body").text # Grab all text from the page body
+    #     body_text = self.browser.find_element(By.TAG_NAME, "body").text # Grab all text from the page body
 
-        # Check each values from the dict if they are present on the webpage
-        for info_value in information.values():
-            self.assertIn(info_value, body_text)
-
-    # Test to check for background image in css
-    def test_check_for_background_image(self):
-        self.browser.get(self.website_url)
+    #     # Check each values from the dict if they are present on the webpage
+    #     for info_value in information.values():
+    #         self.assertIn(info_value, body_text)
+    
+    def check_image(self, x):
+        background_element = self.browser.find_element(By.CLASS_NAME, "Background")
+        css_element = background_element.value_of_css_property("background-image")
         
-        css_background_value = self.browser.find_element(By.CLASS_NAME, "HeaderImage")
+        return "background{}.jpg".format(x) in css_element
 
-        # test if background.jpg is in the value of css property background-image
-        self.assertIn('background.jpg', css_background_value.value_of_css_property("background-image") ) 
 
-    def test_check_for_product_image1(self):
+    def test_for_background(self):
         self.browser.get(self.website_url)
+        css_background_value = self.browser.find_element(By.CLASS_NAME, "Background")
         
-        # Locate element and get its product image value
-        product_element1 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod1.jpg"]')
+        wait = WebDriverWait(self.browser, 10)
+        check_image_lambda = lambda _ : self.check_image(str(i))
 
-        # test if prod1.jpg is on the website 
-        self.assertIn('prod1.jpg', product_element1.get_attribute('src'))
-
-    def test_check_for_product_image2(self):
-        self.browser.get(self.website_url)
-        
-        
-        product_element2 = self.browser.find_element(By.XPATH, '//img[@src="assets/images/prod2.jpg"]')
-
-       
-        self.assertIn('prod2.jpg', product_element2.get_attribute('src'))
+        for i in range(1, 4):
+            wait.until(check_image_lambda, "Timeout")
+            print("Wait done")   
+            
 
     def read_svg_data(self, file_name):
         # Get the path to the file
@@ -92,6 +94,7 @@ class CheckSiteAvailability(unittest.TestCase):
             return file_data
 
     # Three tests to check if the correct icons are used on the webpage
+    # TODO: HREF CHECK
     def test_check_for_facebook_icon(self):
         self.browser.get(self.website_url)
         facebook_css_element = self.browser.find_element(By.CLASS_NAME, "FacebookIcon")
@@ -115,27 +118,40 @@ class CheckSiteAvailability(unittest.TestCase):
         file_data = self.read_svg_data('twitter-line.svg')
 
         self.assertIn(file_data, twitter_css_element.value_of_css_property("background-image").replace('\\', ''))
-           
+    
+    # TODO: FIX THIS
     def test_check_for_products(self):
-        # List of products
-        products = [
-            "Capricciosa", "skinka, championer", "90 kr", 
-            "Calzone", "inbakad, skinka", "85 kr", 
-            "Margherita", "ost", "80 kr",
-            "Hawaii", "skinka, ananas", "90 kr",
-            "Vesuvio", "skinka", "85 kr", 
-            "Extra topping", "5 kr",
-            "Pompei", "bacon, rödlök, ägg, curry", "90 kr",
-            "La Casa", "championer, räkor, skinka", "95 kr"
-        ]
-
         self.browser.get(self.website_url)
 
-        products_table = self.browser.find_element(By.ID, "Products").text # Grab all text from products <table>
+        # List of products
+        products = {
+            "Capricciosa": ["skinka, championer", "90 kr"], 
+            "Calzone": ["inbakad, skinka", "85 kr"], 
+            "Margherita": ["ost", "80 kr"],
+            "Hawaii": ["skinka, ananas", "90 kr"],
+            "Vesuvio": ["skinka", "85 kr"], 
+            "Extra topping": ["5 kr"],
+            "Pompei": ["bacon, rödlök, ägg, curry", "90 kr"],
+            "La Casa": ["championer, räkor, skinka", "95 kr"]
+        }
 
-        # Check each values from the list if they are present on the webpage
-        for product in products:
-            self.assertIn(product, products_table)
+        products_table = self.browser.find_element(By.ID, "Products")
+        page_products_element = products_table.find_elements(By.TAG_NAME, "tr")
+        # print("products text:", products.text)
+        # print("PRODUCTS:", products_table)
+        for product in page_products_element:
+            pizza = product.get_attribute("data-pizza")
+            listing_text = product.text
+
+            if isinstance(pizza, NoneType):
+                continue
+            
+            if pizza in listing_text:
+                self.assertIn(" ".join(products[pizza]), listing_text)
+                # self.assertIn(products[pizza], listing_text)
+
+            print(pizza, type(pizza))
+            print(listing_text, type(listing_text))
 
     def test_check_for_logo(self):
         self.browser.get(self.website_url)

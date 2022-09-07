@@ -115,10 +115,15 @@ header {
 }
 
 .Logo {
-  height: 20px;
+  transform: scale(2);
+  height: 150px;
+  width: 150px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 2%;
+
+  background-image: url('../images/rafikilogo.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 nav {
@@ -254,18 +259,6 @@ main > :last-child {
   background-repeat: no-repeat;
 }
 
-.Logo {
 
-  background-image: url('../images/rafikilogo.svg');
-  background-repeat: no-repeat;
-  fill: white;
-  /* background-position: center; */
-  /* background-size: cover; */
-
-  /* width: 25%; */
-  width: 250px;
-  height: 250px;
-
-}
 
 

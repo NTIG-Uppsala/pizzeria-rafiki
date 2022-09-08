@@ -94,5 +94,8 @@ jobs:
             uses: linus-jansson/screenshot-website@v1.x
             with:
               source: https://ntig-uppsala.github.io/pizzeria-rafiki/
+              path: screenshots/
               destination: screenshot-${{ matrix.width }}.png
+              full-page: true
               width: ${{ matrix.width }}
+              

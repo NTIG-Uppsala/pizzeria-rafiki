@@ -87,7 +87,7 @@ jobs:
 
         strategy:
           matrix:
-            width: [2560, 1366, 1920, 768] # Multiple resolutions
+            width: [1366, 1920, 768] # Multiple resolutions
 
         steps:
           - name: Screenshot Website
@@ -98,4 +98,4 @@ jobs:
               destination: screenshot-${{ matrix.width }}.png
               full-page: true
               width: ${{ matrix.width }}
-              
+             

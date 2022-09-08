@@ -14,7 +14,7 @@ En [GitHub action](https://github.com/linus-jansson/html5validator-action) valid
 ### Steg 2. Testning
 Sidan startas lokalt på GitHub's servrar.
 
-För att testa hemsidan används biblioteket Selenium kombinerat med Python's inbyggda bibliotek `unittest`. Selenium laddar in hemsidan på den lokala servern (se `src/tests/test_website.py` för innehållet av skriptet) och kör tester av innehållet på hemsidan i form av *unit tests*.
+För att testa hemsidan används biblioteket Selenium kombinerat med Python's inbyggda bibliotek `unittest`. Selenium laddar in hemsidan på den lokala servern (se `{REPO_DIR}/tests/test_website.py` för innehållet av skriptet) och kör tester av innehållet på hemsidan i form av *unit tests*.
 
 Pythonskriptet returnerar om testerna har gått igenom med ett *fail* eller *pass*.
 
@@ -30,8 +30,8 @@ Skulle det installeras nya bibliotek, alternativt att befintliga bibliotek uppda
 
 För att installera de bibliotek som krävs skriver man `python -m pip install -r tests_requirements.txt`.
 
-### Workflows lokalt
-[Följ installations guide](https://github.com/nektos/act)
+### Testa lokalt
+Kör tester lokalt genom att navigera till `{REPO_DIR}/tests/` i terminalen och köra `test_website.py` med Python (för att testerna ska kunna köras krävs att du har `firefox` installerat).
 
 ## Utvecklingsmiljö
 Utdrag från `tests_requirements.txt`:

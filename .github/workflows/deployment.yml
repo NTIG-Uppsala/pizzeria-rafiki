@@ -98,4 +98,7 @@ jobs:
               destination: screenshot-${{ matrix.width }}.png
               full-page: true
               width: ${{ matrix.width }}
+              type: 'jpeg'
+              quality: 0.5
+              scale-factor: 1
              

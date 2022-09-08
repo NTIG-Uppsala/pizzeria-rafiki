@@ -87,7 +87,7 @@ jobs:
 
         strategy:
           matrix:
-            width: [1366, 1920, 768] # Multiple resolutions
+            width: [2560, 1366, 1920, 768] # Multiple resolutions
 
         steps:
           - name: Screenshot Website

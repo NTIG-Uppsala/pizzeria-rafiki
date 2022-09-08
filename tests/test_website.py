@@ -27,7 +27,6 @@ class CheckSiteAvailability(unittest.TestCase):
         
         path_to_binaries = Path(__file__).resolve().parents[1] / Path('bin')
         if sys.platform == "win32":
-            # # self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
             self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver.exe')), options=run_options) # Initializes the browser instance with the driver
         else:
             self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver

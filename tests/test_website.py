@@ -27,7 +27,6 @@ class CheckSiteAvailability(unittest.TestCase):
         
         path_to_binaries = Path(__file__).resolve().parents[1] / Path('bin')
         if sys.platform == "win32":
-            # # self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
             self.browser = webdriver.Firefox(service=FirefoxService(executable_path=path_to_binaries/Path('geckodriver.exe')), options=run_options) # Initializes the browser instance with the driver
         else:
             self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options) # Initializes the browser instance with the driver
@@ -155,14 +154,14 @@ class CheckSiteAvailability(unittest.TestCase):
 
         # List of products
         products = {
-            "Capricciosa": ["skinka, championer", "90 kr"], 
+            "Capricciosa": ["skinka, champinjoner", "90 kr"], 
             "Calzone": ["inbakad, skinka", "85 kr"], 
             "Margherita": ["ost", "80 kr"],
             "Hawaii": ["skinka, ananas", "90 kr"],
             "Vesuvio": ["skinka", "85 kr"], 
             "Extra topping": ["5 kr"],
             "Pompei": ["bacon, rödlök, ägg, curry", "90 kr"],
-            "La Casa": ["championer, räkor, skinka", "95 kr"]
+            "La Casa": ["champinjoner, räkor, skinka", "95 kr"]
         }
 
         products_table = self.browser.find_element(By.ID, "Products")

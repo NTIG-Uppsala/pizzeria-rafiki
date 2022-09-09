@@ -16,7 +16,7 @@ jobs:
               uses: actions/checkout@v2
             
             - name: ✔ HTML5 Validator
-              uses: linus-jansson/html5validator-action@v7.1.1
+              uses: NTIG-Uppsala/html5validator-action@v7.1.1
               with:
                 root: src/
                 css: true
@@ -55,7 +55,7 @@ jobs:
               uses: actions/checkout@v2
             
             - name: Deploy website 🚀
-              uses: linus-jansson/github-pages-deploy-action@v4
+              uses: NTIG-Uppsala/github-pages-deploy-action@v4
               with:
                 folder: src # The folder that should be used in the deployment
 
@@ -81,24 +81,24 @@ jobs:
             - name: Run Tests scripts on live website
               run: python tests/test_website.py https://ntig-uppsala.github.io/pizzeria-rafiki/ # Tests the live website
     
-    screenshot:
-        name: Screenshots of website
-        runs-on: ubuntu-latest
+    # screenshot:
+    #     name: Screenshots of website
+    #     runs-on: ubuntu-latest
 
-        strategy:
-          matrix:
-            width: [2560, 1366, 1920, 768] # Multiple resolutions
+    #     strategy:
+    #       matrix:
+    #         width: [2560, 1366, 1920, 768] # Multiple resolutions
 
-        steps:
-          - name: Screenshot Website
-            uses: linus-jansson/screenshot-website@v1.x
-            with:
-              source: https://ntig-uppsala.github.io/pizzeria-rafiki/
-              path: screenshots/
-              destination: screenshot-${{ matrix.width }}.png
-              full-page: true
-              width: ${{ matrix.width }}
-              type: 'jpeg'
-              quality: 0.5
-              scale-factor: 1
+    #     steps:
+    #       - name: Screenshot Website
+    #         uses: linus-jansson/screenshot-website@v1.x
+    #         with:
+    #           source: https://ntig-uppsala.github.io/pizzeria-rafiki/
+    #           path: screenshots/
+    #           destination: screenshot-${{ matrix.width }}.png
+    #           full-page: true
+    #           width: ${{ matrix.width }}
+    #           type: 'jpeg'
+    #           quality: 0.5
+    #           scale-factor: 1
              

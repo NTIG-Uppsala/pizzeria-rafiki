@@ -1,8 +1,11 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
+from datetime import datetime, timedelta
 from types import NoneType
 import unittest
 import sys
+from datetime import datetime
 import time
+import re
 from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -216,9 +219,11 @@ class CheckSiteAvailability(unittest.TestCase):
         for res in resolutions:
             x,y = res
 
+            date = str(datetime.now())
+
             self.browser.set_window_position(0, 0)
             self.browser.set_window_size(x, y)
-            self.browser.save_screenshot("screenshots/screenshot" + str(x) + "x" + str(y) + ".png")
+            self.browser.save_screenshot("screenshots/screenshot" + re.sub(r'[\W_]+', '', date) + str(x) + "x" + str(y) + ".png")
             
             print("saved screenshot with resolution", x, y)
 

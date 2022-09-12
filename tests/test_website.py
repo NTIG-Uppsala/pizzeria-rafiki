@@ -202,6 +202,26 @@ class CheckSiteAvailability(unittest.TestCase):
             print("Image path: {} \t image size: {}".format(image, image_size))
             self.assertGreater(5e5, image_size)
 
+    def test_screenshot(self):
+        self.browser.get(self.website_url)
+    
+        resolutions = [
+            [2560, 1440], # 2k desktop
+            [1920, 1080], # desktop
+            [1440, 1080], # laptop
+            [820, 1180], # iPad Air
+            [390, 844], # iPhone 12 Pro
+        ]
+
+        for res in resolutions:
+            x,y = res
+
+            self.browser.set_window_position(0, 0)
+            self.browser.set_window_size(x, y)
+            self.browser.save_screenshot("screenshots/screenshot" + str(x) + "x" + str(y) + ".png")
+            
+            print("saved screenshot with resolution", x, y)
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         CheckSiteAvailability.website_url = sys.argv.pop() # Change url to passed in argument

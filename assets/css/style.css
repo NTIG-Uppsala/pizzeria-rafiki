@@ -30,6 +30,12 @@ html, body {
 
 }
 
+body::after {
+    content:   
+    url('../images/background2.jpg')
+    url('../images/background3.jpg');
+}
+
 p, a, h1, h2, h3, h4, th, td {
   font-family: 'BerlinSansFB';
   color: white;
@@ -45,13 +51,8 @@ main {
     display: flex;
 }
 
-/* .Contact {
-  width: 240px;
-} */
-
 .Background {
   /* Bakground image */
-  /* background-image: url('../images/background.jpg'); */
   background-image: url('../images/background1.jpg');
 
   background-position: center;

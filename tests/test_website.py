@@ -74,7 +74,7 @@ class CheckSiteAvailability(unittest.TestCase):
             "Sunday": ["Söndagar", "12-20"],
         }
 
-        open_hours_table = self.browser.find_element(By.ID, "OpenHours")
+        open_hours_table = self.browser.find_element(By.CLASS_NAME, "Openhours")
         open_hours_elements = open_hours_table.find_elements(By.TAG_NAME, "tr")
 
         for open_hour in open_hours_elements:

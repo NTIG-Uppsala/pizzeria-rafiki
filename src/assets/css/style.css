@@ -45,6 +45,10 @@ main {
     display: flex;
 }
 
+/* .Contact {
+  width: 240px;
+} */
+
 .Background {
   /* Bakground image */
   /* background-image: url('../images/background.jpg'); */
@@ -143,7 +147,7 @@ footer {
   align-items: center;
 
   width: 100%;
-  height: 50px;
+  height: auto;
 
   bottom: 0px;
 
@@ -161,6 +165,9 @@ footer {
 /* Inherit visability from parent to show icons */
 footer #Socials {
   display: inherit;
+  max-width: 240px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Used for adding a dropshadow to elements */

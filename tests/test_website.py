@@ -226,7 +226,7 @@ class CheckSiteAvailability(unittest.TestCase):
             self.browser.save_screenshot("screenshots/screenshot" + re.sub(r'[\W_]+', '', date) + str(x) + "x" + str(y) + ".png")
             
             print("saved screenshot with resolution", x, y)
-    
+
     def test_map(self):
         self.browser.get(self.website_url)
         self.browser.find_element(By.ID, "Map")

@@ -183,7 +183,7 @@ main  > :first-child {
 }
 
 main > :last-child {
-  margin-bottom: 100px;
+  margin-bottom: 250px;
 }
 
 .Container {
@@ -237,6 +237,7 @@ main > :last-child {
   footer {
     flex-direction: column;
     position: relative;
+    bottom: 0px;
 
     height: 100%;
   }

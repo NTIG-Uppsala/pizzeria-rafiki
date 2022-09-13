@@ -19,7 +19,6 @@
 
 }
 
-
 html, body {
   margin: 0;
   padding: 0;
@@ -32,6 +31,11 @@ html, body {
 
 body::after {
     opacity: 0;
+    width: 1%;
+    height: 1%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     content:   
     url('../images/background2.jpg')
     url('../images/background3.jpg');
@@ -170,6 +174,8 @@ footer #Socials {
   max-width: 240px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 /* Used for adding a dropshadow to elements */

@@ -31,6 +31,7 @@ html, body {
 }
 
 body::after {
+    opacity: 0;
     content:   
     url('../images/background2.jpg')
     url('../images/background3.jpg');

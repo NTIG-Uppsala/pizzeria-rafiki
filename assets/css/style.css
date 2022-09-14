@@ -35,7 +35,7 @@ body {
 }
 
 p, a, h1, h2, h3, h4, th, td {
-  font-family: 'BerlinSansFB';
+  font-family: 'BerlinSansFB', sans-serif;
   color: white;
 }
 
@@ -54,7 +54,7 @@ main {
 }
 
 .Background {
-  /* Bakground image */
+  /* Background image */
   background-image: url('../images/background1.jpg');
 
   background-position: center;
@@ -164,7 +164,6 @@ footer {
 
 }
 
-
 /* Inherit visability from parent to show icons */
 footer #Socials {
   display: flex;
@@ -183,7 +182,7 @@ footer #Socials {
 }
 
 /* First and last element of main should have a margin to not be covered from the header and footer */
-main  > :first-child {
+main > :first-child {
   margin-top: 50px;
 }
 
@@ -230,7 +229,6 @@ main > :last-child {
     align-items: center;  
     flex-direction: column; 
 }
-
 
 /* Changes on large screens */
 @media (max-width: 800px) {

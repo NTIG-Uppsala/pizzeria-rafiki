@@ -199,11 +199,11 @@ class CheckSiteAvailability(unittest.TestCase):
         # Get path for image folder
         image_path = Path(__file__).resolve().parents[1] / Path('src/assets/images/')
         
-        # Assert check for images larger than 1Mb
+        # Assert check for images larger than 500kB
         for image in image_path.glob('**/*.*'):
             image_size = Path(image).stat().st_size
             print("Image path: {} \t image size: {}".format(image, image_size))
-            self.assertGreater(5e5, image_size)
+            self.assertGreater(500000, image_size)
 
     def test_screenshot(self):
         self.browser.get(self.website_url)

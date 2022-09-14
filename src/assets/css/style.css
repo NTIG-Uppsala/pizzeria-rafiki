@@ -6,7 +6,7 @@
 }
 
 :root {
-    --height-header: 150px;
+    --height-header: 100px;
     --main-colors: #161311;
     --container-color: #161311e0;
 }
@@ -122,9 +122,9 @@ header {
 }
 
 .Logo {
-    transform: scale(2);
-    height: 150px;
-    width: 150px;
+    /* transform: scale(2); */
+    height: 140px;
+    width: 200px;
     margin-right: auto;
     margin-left: auto;
 
@@ -157,8 +157,8 @@ footer {
     z-index: 9999;
     font-size: 30px;
     
-    padding-top: 10px;
-    padding-bottom: 20px;
+    /* padding-top: 10px;
+    padding-bottom: 20px; */
 
     background-color: #161311;
 
@@ -257,6 +257,7 @@ main > :last-child {
     width: 50px;
     margin: 15px;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .TwitterIcon {

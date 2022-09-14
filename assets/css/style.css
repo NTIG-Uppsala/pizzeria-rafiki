@@ -236,7 +236,7 @@ main > :last-child {
 
 
 /* Changes on large screens */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
   .Container {
     max-width: 75vw;

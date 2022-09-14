@@ -22,23 +22,16 @@
 html, body {
   margin: 0;
   padding: 0;
-  
+}
+
+body {
   display: flex;
   flex-direction: column;
   background-color: black;
 
-}
-
-body::after {
-    opacity: 0;
-    width: 1%;
-    height: 1%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    content:   
-    url('../images/background2.jpg')
-    url('../images/background3.jpg');
+  content:   
+  url('../images/background2.jpg')
+  url('../images/background3.jpg');
 }
 
 p, a, h1, h2, h3, h4, th, td {

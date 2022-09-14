@@ -164,11 +164,20 @@ footer {
 
 }
 
-/* Inherit visability from parent to show icons */
 footer #Socials {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+footer #Socials div {
+  display: flex;
   max-width: 240px;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   margin-left: 50px;
   margin-right: 50px;
@@ -244,17 +253,13 @@ main > :last-child {
 
     height: 100%;
   }
-
-  footer #Socials {
-    display: flex;
-    flex-direction: row;
-  }
 }
 
 .Icon {
   height: 50px;
   width: 50px;
   margin: 15px;
+  margin-top: 0px;
 }
 
 .TwitterIcon {

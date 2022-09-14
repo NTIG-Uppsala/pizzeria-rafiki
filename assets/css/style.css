@@ -233,10 +233,7 @@ main > :last-child {
 }
 
 .Openhours {
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    flex-direction: column; 
+    width: 100%;
 }
 
 /* Changes on large screens */

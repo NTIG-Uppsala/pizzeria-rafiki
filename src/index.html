@@ -14,13 +14,20 @@
         <div class="Logo"></div>
         <nav>
             <a href="#Order">Beställ</a>
-            <a href="#Map">Hitta hit</a>
             <a href="#OpenHours">Öppetider</a>
-            <a href="#Menu">Meny</a>
+            <a href="#Map">Hitta hit</a>
         </nav>
     </header>
     <main>
-        <div id="Menu" class="Container BoxShadow">
+        <div id="Order" class="Container BoxShadow">
+            <div class="Title">
+                <h1>Beställ</h1>
+            </div>
+            <div>
+                <a id="PhoneNumber" href="tel:0630-555-555">
+                    0630-555-555
+                </a>
+            </div>
             <div class="Title">
                 <h1>Meny</h1>
             </div>
@@ -73,24 +80,65 @@
                     </tr>
                 </table>
             </div>
+        </div>
+        <div id="OpenHours" class="Container BoxShadow">
             <div class="Title">
-                <h1>Beställ</h1>
+                <h1>Öppettider</h1>
+            </div>
+            <div class="Wrapper">
+                <table class="Openhours">
+                    <tr data-day="Monday">
+                        <th style="text-align: left;">Måndagar</th>
+                        <td></td>
+                        <td style="text-align: right;">10 - 22</td>
+                    </tr>
+                    <tr data-day="Tuesday">
+                        <th style="text-align: left;">Tisdagar</th>
+                        <td></td>
+                        <td style="text-align: right;">10 - 22</td>
+                    </tr>
+                    <tr data-day="Wedensday">
+                        <th style="text-align: left;">Onsdagar</th>
+                        <td></td>
+                        <td style="text-align: right;">10 - 22</td>
+                    </tr>
+                    <tr data-day="Thursday">
+                        <th style="text-align: left;">Torsdagar</th>
+                        <td></td>
+                        <td style="text-align: right;">10 - 22</td>
+                    </tr>
+                    <tr data-day="Friday">
+                        <th style="text-align: left;">Fredagar</th>
+                        <td></td>
+                        <td style="text-align: right;">10 - 23</td>
+                    </tr>
+                    <tr data-day="Saturday">
+                        <th style="text-align: left;">Lördagar</th>
+                        <td></td>
+                        <td style="text-align: right;">12 - 23</td>
+                    </tr>
+                    <tr data-day="Sunday">
+                        <th style="text-align: left;">Söndagar</th>
+                        <td></td>
+                        <td style="text-align: right;">12 - 20</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="Container BoxShadow">
+            <div class="Title">
+                <h1>Hitta hit</h1>
             </div>
             <div>
-                <a id="PhoneNumber" href="tel:0630-555-555">
-                    0630-555-555
-                </a>
                 <p>
                     Fjällgatan 32H <br>
                     981 39 Flen
                 </p>
+                <iframe id="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2051.9318612247876!2d16.592368716487428!3d59.04985334044074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465ec4abc74e82c5%3A0x4642c0225f90c202!2sKungsv%C3%A4gen%202%2C%20642%2034%20Flen!5e0!3m2!1ssv!2sse!4v1663054178090!5m2!1ssv!2sse" style="border: 0; width: 100%; height: 300px;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-        </div>
+        </div>    
     </main>
     <footer class="BoxShadow">
-        <div class="FooterItem">
-            <iframe id="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2051.9318612247876!2d16.592368716487428!3d59.04985334044074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465ec4abc74e82c5%3A0x4642c0225f90c202!2sKungsv%C3%A4gen%202%2C%20642%2034%20Flen!5e0!3m2!1ssv!2sse!4v1663054178090!5m2!1ssv!2sse" style="border: 0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
         <div id="Socials" class="FooterItem">
             <div>
                 <a class="Icon FacebookIcon" href="https://facebook.com/NTIuppsala" target="_blank"></a>
@@ -98,45 +146,6 @@
                 <a class="Icon InstagramIcon" href="https://instagram.com/NTIuppsala" target="_blank"></a>
             </div>
             <a href="mailto:info@rafiki.se" id="MailAdress">info@rafiki.se</a>
-        </div>
-        <div class="Wrapper FooterItem">
-            <table class="Openhours">
-                <tr data-day="Monday">
-                    <th style="text-align: left;">Måndagar</th>
-                    <td></td>
-                    <td style="text-align: right;">10 - 22</td>
-                </tr>
-                <tr data-day="Tuesday">
-                    <th style="text-align: left;">Tisdagar</th>
-                    <td></td>
-                    <td style="text-align: right;">10 - 22</td>
-                </tr>
-                <tr data-day="Wedensday">
-                    <th style="text-align: left;">Onsdagar</th>
-                    <td></td>
-                    <td style="text-align: right;">10 - 22</td>
-                </tr>
-                <tr data-day="Thursday">
-                    <th style="text-align: left;">Torsdagar</th>
-                    <td></td>
-                    <td style="text-align: right;">10 - 22</td>
-                </tr>
-                <tr data-day="Friday">
-                    <th style="text-align: left;">Fredagar</th>
-                    <td></td>
-                    <td style="text-align: right;">10 - 23</td>
-                </tr>
-                <tr data-day="Saturday">
-                    <th style="text-align: left;">Lördagar</th>
-                    <td></td>
-                    <td style="text-align: right;">12 - 23</td>
-                </tr>
-                <tr data-day="Sunday">
-                    <th style="text-align: left;">Söndagar</th>
-                    <td></td>
-                    <td style="text-align: right;">12 - 20</td>
-                </tr>
-            </table>
         </div>
     </footer>
 </body>

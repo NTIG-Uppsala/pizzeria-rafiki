@@ -49,6 +49,10 @@ main {
     display: flex;
 }
 
+.FooterItem {
+  min-width: 350px; 
+}
+
 .Background {
   /* Bakground image */
   background-image: url('../images/background1.jpg');
@@ -163,7 +167,7 @@ footer {
 
 /* Inherit visability from parent to show icons */
 footer #Socials {
-  display: inherit;
+  display: flex;
   max-width: 240px;
   flex-wrap: wrap;
   justify-content: center;

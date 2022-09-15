@@ -274,3 +274,25 @@ main > :last-child {
     background-image: url('../images/instagram-fill.svg');
     background-repeat: no-repeat;
 }
+
+th {
+    text-align: left;
+}
+
+td {
+    text-align: right;
+    font-weight: bold;
+}
+
+#Products td {
+    text-align: left;
+    white-space: nowrap;
+}
+
+.Openhours th {
+    width: 50%;
+}
+
+tr:nth-child(even) {
+    background-color: #5754536e;
+  }

@@ -247,6 +247,10 @@ main > :last-child {
     background-repeat: no-repeat;
 }
 
+table {
+    border-spacing: 0px;
+}
+
 th {
     text-align: left;
 }

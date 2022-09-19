@@ -62,6 +62,7 @@ webdriver_manager==3.8.3
 - Python
 
 ## Definition of Done 
+- Korrekt innehåll
 - 50% > av närvarande måste godkänna och förstå
 - Koden incheckad och klar på GitHub
 - Kommentarer klara

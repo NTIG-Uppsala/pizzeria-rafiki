@@ -132,6 +132,11 @@ nav {
     z-index: 5;
 }
 
+nav a {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 footer {
     display: flex;
     position: fixed;
@@ -255,18 +260,12 @@ th {
     text-align: left;
 }
 
-td {
+.rightAlign {
     text-align: right;
-    font-weight: bold;
 }
 
 #Products {
     width: 100%;
-}
-
-#Products td {
-    text-align: left;
-    white-space: nowrap;
 }
 
 .Openhours th {
@@ -274,5 +273,5 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #5754536e;
+    background-color: #575453e0;
   }

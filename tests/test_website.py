@@ -217,9 +217,9 @@ class CheckSiteAvailability(unittest.TestCase):
             self.browser.save_screenshot("screenshots/screenshot" + re.sub(r'[\W_]+', '', date) + str(x) + "x" + str(y) + ".png")
             print("saved screenshot with resolution", x, y)
 
-    def test_map(self):
+    def test_map_interactive(self):
         self.browser.get(self.website_url)
-        self.browser.find_element(By.ID, "Map")
+        self.browser.find_element(By.ID, "MapInteractive")
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

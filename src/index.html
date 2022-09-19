@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="assets/images/rafikilogofavicon.png">
     <title>Pizzeria Rafiki</title>
 </head>
+
 <body>
     <div class="Background"></div>
     <header class="BoxShadow">
@@ -36,42 +38,42 @@
                     <tr>
                         <th>Pizza</th>
                         <td></td>
-                        <th class="rightAlign">Pris</th>
+                        <th class="RightAlign">Pris</th>
                     </tr>
                     <tr data-pizza="Margherita">
                         <th>Margherita</th>
                         <td>ost</td>
-                        <td class="rightAlign"><span>80 kr</span></td>
+                        <td class="RightAlign">80 kr</td>
                     </tr>
                     <tr data-pizza="Calzone">
                         <th>Calzone</th>
                         <td>inbakad, skinka</td>
-                        <td class="rightAlign">85 kr</td>
+                        <td class="RightAlign">85 kr</td>
                     </tr>
                     <tr data-pizza="Vesuvio">
                         <th>Vesuvio</th>
                         <td>skinka</td>
-                        <td class="rightAlign">85 kr</td>
+                        <td class="RightAlign">85 kr</td>
                     </tr>
                     <tr data-pizza="Capricciosa">
                         <th>Capricciosa</th>
                         <td>skinka, champinjoner</td>
-                        <td class="rightAlign">90 kr</td>
+                        <td class="RightAlign">90 kr</td>
                     </tr>
                     <tr data-pizza="Hawaii">
                         <th>Hawaii</th>
                         <td>skinka, ananas</td>
-                        <td class="rightAlign">90 kr</td>
+                        <td class="RightAlign">90 kr</td>
                     </tr>
                     <tr data-pizza="Pompei">
                         <th>Pompei</th>
                         <td>bacon, rödlök, ägg, curry</td>
-                        <td class="rightAlign">90 kr</td>
+                        <td class="RightAlign">90 kr</td>
                     </tr>
                     <tr data-pizza="La Casa">
                         <th>La Casa</th>
                         <td>champinjoner, räkor, skinka</td>
-                        <td class="rightAlign">95 kr</td>
+                        <td class="RightAlign">95 kr</td>
                     </tr>
                     <tr>
                         <th>&nbsp;</th>
@@ -79,7 +81,7 @@
                     <tr data-pizza="Extra topping">
                         <th>Extra topping</th>
                         <td></td>
-                        <td class="rightAlign">5 kr</td>
+                        <td class="RightAlign">5 kr</td>
                     </tr>
                 </table>
             </div>
@@ -92,31 +94,31 @@
                 <table class="Openhours">
                     <tr data-day="Monday">
                         <th>Måndagar</th>
-                        <td class="rightAlign">10 - 22</td>
+                        <td class="RightAlign">10 - 22</td>
                     </tr>
                     <tr data-day="Tuesday">
                         <th>Tisdagar</th>
-                        <td class="rightAlign">10 - 22</td>
+                        <td class="RightAlign">10 - 22</td>
                     </tr>
                     <tr data-day="Wedensday">
                         <th>Onsdagar</th>
-                        <td class="rightAlign">10 - 22</td>
+                        <td class="RightAlign">10 - 22</td>
                     </tr>
                     <tr data-day="Thursday">
                         <th>Torsdagar</th>
-                        <td class="rightAlign">10 - 22</td>
+                        <td class="RightAlign">10 - 22</td>
                     </tr>
                     <tr data-day="Friday">
                         <th>Fredagar</th>
-                        <td class="rightAlign">10 - 23</td>
+                        <td class="RightAlign">10 - 23</td>
                     </tr>
                     <tr data-day="Saturday">
                         <th>Lördagar</th>
-                        <td class="rightAlign">12 - 23</td>
+                        <td class="RightAlign">12 - 23</td>
                     </tr>
                     <tr data-day="Sunday">
                         <th>Söndagar</th>
-                        <td class="rightAlign">12 - 20</td>
+                        <td class="RightAlign">12 - 20</td>
                     </tr>
                 </table>
             </div>
@@ -125,14 +127,20 @@
             <div class="Title">
                 <h1>Hitta hit</h1>
             </div>
-            <div>
+            <div id="mapadress">
                 <p>
                     Kungsvägen 2B <br>
                     642 34 Flen
                 </p>
-                <iframe id="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2051.9318612247876!2d16.592368716487428!3d59.04985334044074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465ec4abc74e82c5%3A0x4642c0225f90c202!2sKungsv%C3%A4gen%202%2C%20642%2034%20Flen!5e0!3m2!1ssv!2sse!4v1663054178090!5m2!1ssv!2sse" style="border: 0; width: 100%; height: 300px;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <script>
+                    let htmlIframeString = `<iframe id="MapInteractive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2051.9318612247876!2d16.592368716487428!3d59.04985334044074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465ec4abc74e82c5%3A0x4642c0225f90c202!2sKungsv%C3%A4gen%202%2C%20642%2034%20Flen!5e0!3m2!1ssv!2sse!4v1663054178090!5m2!1ssv!2sse" style="border: 0; width: 100%; height: 300px;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+                    document.querySelector("#mapadress").innerHTML += htmlIframeString
+                </script>
+                <noscript>
+                    <a href="assets/images/karta.jpg"><img src="assets/images/karta.jpg" id="Map"></a>
+                </noscript>
             </div>
-        </div>    
+        </div>
     </main>
     <footer class="BoxShadow">
         <div id="Socials" class="FooterItem">
@@ -145,4 +153,5 @@
         </div>
     </footer>
 </body>
+
 </html>

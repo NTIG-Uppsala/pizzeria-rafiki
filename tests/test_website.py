@@ -46,7 +46,7 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_check_for_contact(self):
         information = {
             "phone_number": "0630-555-555",
-            "adress": "Fjällgatan 32H 981 39 Flen",
+            "adress": "Kungsvägen 2B 642 34 Flen",
             "mail_adress": "info@rafiki.se"
         }
         self.browser.get(self.website_url)

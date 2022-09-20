@@ -114,6 +114,20 @@ header {
     background-color: #161311;
 }
 
+#number {
+    background-color:#575453e0;
+    color: white;
+    font-family: 'BerlinSansFB';
+    border-width: 1px;
+}
+
+#submit {
+    background-color:#575453e0;
+    color: white;
+    font-family: 'BerlinSansFB';
+    border-width: 1px;
+}
+
 .Logo {
     height: 140px;
     width: 200px;

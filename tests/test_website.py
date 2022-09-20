@@ -1,5 +1,6 @@
 # Utgår ifrån https://github.com/jsoma/selenium-github-actions
 from datetime import datetime
+from traceback import print_tb
 from types import NoneType
 import unittest
 import sys
@@ -223,9 +224,8 @@ class CheckSiteAvailability(unittest.TestCase):
 
     def test_zipcodes(self):
         self.browser.get(self.website_url)
-        zipcode = self.browser.find_element(By.ID, "postnummerCheck")
-        zipcode.send_keys("1")
-        self.assertIn('Inte ett postnummer.', self.browser.find_element(By.ID, "jsCheck"))
+        zipcode = self.browser.find_element(By.ID, "number")
+        submitForm = self.browser.find_element(By.ID, "submit")
 
         zipcodes = {
             '1': 'Inte ett postnummer.',
@@ -238,9 +238,8 @@ class CheckSiteAvailability(unittest.TestCase):
         for code in zipcodes:
             zipcode.clear()
             zipcode.send_keys(code)
-            zipcode.submit()
-
-            self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck"))
+            submitForm.click()
+            self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck").text)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

@@ -260,7 +260,7 @@ th {
     text-align: left;
 }
 
-.rightAlign {
+.RightAlign {
     text-align: right;
 }
 
@@ -274,4 +274,8 @@ th {
 
 tr:nth-child(even) {
     background-color: #575453e0;
-  }
+}
+
+#Map {
+    width: 100%;
+}

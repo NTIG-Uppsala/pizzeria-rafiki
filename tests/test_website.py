@@ -221,6 +221,27 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
         self.browser.find_element(By.ID, "MapInteractive")
 
+    def test_zipcodes(self):
+        self.browser.get(self.website_url)
+        zipcode = self.browser.find_element(By.ID, "postnummerCheck")
+        zipcode.send_keys("1")
+        self.assertIn('Inte ett postnummer.', self.browser.find_element(By.ID, "jsCheck"))
+
+        zipcodes = {
+            '1': 'Inte ett postnummer.',
+            '64230': 'Vi kör ut, ring telefonnummret ovan!',
+            '64238': 'Vi kör tyvärr inte ut till dig.',
+            '64239': 'Vi kör ut, ring telefonnummret ovan!',
+            '642301': 'Inte ett postnummer.'
+        }
+
+        for code in zipcodes:
+            zipcode.clear()
+            zipcode.send_keys(code)
+            zipcode.submit()
+
+            self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck"))
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         CheckSiteAvailability.website_url = sys.argv.pop() # Change url to passed in argument

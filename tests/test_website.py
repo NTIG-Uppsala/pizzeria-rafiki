@@ -243,7 +243,7 @@ class CheckSiteAvailability(unittest.TestCase):
     
     def test_open_sign(self):
         self.browser.get(self.website_url)
-        self.assertIn('öppet' or 'öppnar', self.browser.find_element(By.ID, "OpenSign").text)
+        self.assertIn('öpp', self.browser.find_element(By.ID, "OpenSign").text)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

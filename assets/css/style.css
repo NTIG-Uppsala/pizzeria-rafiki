@@ -229,20 +229,6 @@ main > :last-child {
     width: 100%;
 }
 
-/* Changes on large screens */
-@media (max-width: 800px) {
-    .Container {
-        max-width: 75vw;
-    }
-    /* Change layout of the footer to columns instead of row */
-    footer {
-        flex-direction: column;
-        position: relative;
-        bottom: 0px;
-        height: 100%;
-    }
-}
-
 .Icon {
     height: 50px;
     width: 50px;
@@ -309,4 +295,34 @@ tr:nth-child(even) {
 
 #Map {
     width: 100%;
+}
+
+/* Changes on small screens */
+@media (max-width: 800px) {
+    .Container {
+        max-width: 75vw;
+    }
+    /* Change layout of the footer to columns instead of row */
+    footer {
+        flex-direction: column;
+        position: relative;
+        bottom: 0px;
+        max-height: fit-content;
+        height: 100%;
+    }
+
+    .FooterLeft {
+        justify-content: center;
+        margin-left: 0px;
+        flex-wrap: nowrap;
+        min-width: 220px;
+    }
+
+    .FooterLeft p {
+        margin: 5px;
+    }
+
+    footer #Socials {
+        margin: 5px;
+    }
 }

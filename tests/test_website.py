@@ -240,6 +240,10 @@ class CheckSiteAvailability(unittest.TestCase):
             zipcode.send_keys(code)
             submitForm.click()
             self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck").text)
+    
+    def test_open_sign(self):
+        self.browser.get(self.website_url)
+        self.assertIn('Öppet' or 'Öppnar', self.browser.find_element(By.ID, "OpenSign").text)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

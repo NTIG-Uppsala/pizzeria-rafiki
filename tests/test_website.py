@@ -215,7 +215,7 @@ class CheckSiteAvailability(unittest.TestCase):
             date = str(datetime.now())
             self.browser.set_window_position(0, 0)
             self.browser.set_window_size(x, y)
-            self.browser.save_screenshot("screenshots/screenshot" + re.sub(r'[\W_]+', '', date) + str(x) + "x" + str(y) + ".png")
+            self.browser.save_screenshot("screenshots/screenshot" + re.sub(r'[\W_]+', '', date) + '_' + str(x) + "x" + str(y) + ".png")
             print("saved screenshot with resolution", x, y)
 
     def test_map_interactive(self):

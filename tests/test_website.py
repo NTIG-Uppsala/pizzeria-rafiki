@@ -53,7 +53,7 @@ class CheckSiteAvailability(unittest.TestCase):
         self.browser.get(self.website_url)
         
         self.assertIn('mailto:info@rafiki.se', self.browser.find_element(By.ID, "MailAdress").get_attribute("href"))
-        self.assertIn('tel:0630-555-555', self.browser.find_element(By.ID, "PhoneNumber").get_attribute("href"))
+        self.assertIn('tel:0630-555-555', self.browser.find_element(By.CLASS_NAME, "PhoneNumber").get_attribute("href"))
 
         # Grab all text from the page body
         body_text = self.browser.find_element(By.TAG_NAME, "body").text.replace('\n', ' ') 

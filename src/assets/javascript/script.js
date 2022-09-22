@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) =>
             document.querySelector("#output").innerHTML = "Inte ett postnummer."
         }
         else if(zipCodeList.includes(event.submitter.parentNode.querySelector("#number").value)){
-            document.querySelector("#output").innerHTML = "Vi kör ut, ring telefonnummret ovan!"
+            document.querySelector("#output").innerHTML = "Vi kör ut, ring telefonnumret ovan!"
         }
         else{
             document.querySelector("#output").innerHTML = "Vi kör tyvärr inte ut till dig."

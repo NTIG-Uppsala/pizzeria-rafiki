@@ -228,8 +228,12 @@ class CheckSiteAvailability(unittest.TestCase):
         submitForm = self.browser.find_element(By.ID, "submit")
 
         zipcodes = {
+            '-12345': 'Inte ett postnummer.',
+            'a12345': 'Inte ett postnummer.',
             '1': 'Inte ett postnummer.',
+            '642 30': 'Vi kör ut, ring telefonnumret ovan!',
             '64230': 'Vi kör ut, ring telefonnumret ovan!',
+            '642 38': 'Vi kör tyvärr inte ut till dig.',
             '64238': 'Vi kör tyvärr inte ut till dig.',
             '64239': 'Vi kör ut, ring telefonnumret ovan!',
             '642301': 'Inte ett postnummer.'

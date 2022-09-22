@@ -264,14 +264,14 @@ main > :last-child {
 
 .FooterLeft p {
     color:rgb(165, 152, 144);
-    font-size: 20;
+    font-size: 12pt;
     text-decoration-color: rgba(165, 152, 144, 0.5);
 
 }
 
 .FooterLeft a {
     color:#a59890;
-    font-size: 12;
+    font-size: 12pt;
     text-decoration-color: rgba(165, 152, 144, 0.5);
 
 }

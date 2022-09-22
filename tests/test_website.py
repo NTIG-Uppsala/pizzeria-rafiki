@@ -229,9 +229,9 @@ class CheckSiteAvailability(unittest.TestCase):
 
         zipcodes = {
             '1': 'Inte ett postnummer.',
-            '64230': 'Vi kör ut, ring telefonnummret ovan!',
+            '64230': 'Vi kör ut, ring telefonnumret ovan!',
             '64238': 'Vi kör tyvärr inte ut till dig.',
-            '64239': 'Vi kör ut, ring telefonnummret ovan!',
+            '64239': 'Vi kör ut, ring telefonnumret ovan!',
             '642301': 'Inte ett postnummer.'
         }
 

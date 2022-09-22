@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'BerlinSansFB';
-    src: url('../fonts/BRLNSR.TTF') format('truetype');
-    font-weight: normal;
+    font-family: 'Quicksand';
+    src: url('../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+    font-weight:100;
     font-style: normal;
 }
 
@@ -33,8 +33,11 @@ body {
 }
 
 p, a, h1, h2, h3, h4, th, td {
-    font-family: 'BerlinSansFB', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(255, 255, 255, 0.5);
     color: white;
+    /* font-weight: normal; */
 }
 
 p, a, th, td {
@@ -117,14 +120,14 @@ header {
 #number {
     background-color:#575453e0;
     color: white;
-    font-family: 'BerlinSansFB';
+    font-family: 'Quicksand';
     border-width: 1px;
 }
 
 #submit {
     background-color:#575453e0;
     color: white;
-    font-family: 'BerlinSansFB';
+    font-family: 'Quicksand';
     border-width: 1px;
 }
 
@@ -260,13 +263,17 @@ main > :last-child {
 }
 
 .FooterLeft p {
-    color:#615e5d;
-    font-size: medium;
+    color:rgb(165, 152, 144);
+    font-size: 20;
+    text-decoration-color: rgba(165, 152, 144, 0.5);
+
 }
 
 .FooterLeft a {
-    color:#615e5d;
-    font-size: medium;
+    color:#a59890;
+    font-size: 12;
+    text-decoration-color: rgba(165, 152, 144, 0.5);
+
 }
 
 table {
@@ -279,6 +286,7 @@ th {
 
 .RightAlign {
     text-align: right;
+    white-space: nowrap;
 }
 
 #Products {

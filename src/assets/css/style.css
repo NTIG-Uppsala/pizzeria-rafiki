@@ -156,7 +156,6 @@ nav a {
 
 footer {
     display: flex;
-    position: fixed;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -257,22 +256,21 @@ main > :last-child {
 
 .FooterLeft {
     display: flex;
-    flex-wrap: wrap;
-    width: 33%; 
-    margin-left: 5px;
+    width: 31%; 
+    margin-left: 50px;
 }
 
 .FooterLeft p {
-    color:rgb(165, 152, 144);
+    color: white;
     font-size: 12pt;
-    text-decoration-color: rgba(165, 152, 144, 0.5);
+    text-decoration-color: white;
 
 }
 
 .FooterLeft a {
-    color:#a59890;
+    color: white;
     font-size: 12pt;
-    text-decoration-color: rgba(165, 152, 144, 0.5);
+    text-decoration-color: white;
 
 }
 

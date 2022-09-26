@@ -6,7 +6,7 @@
 }
 
 :root {
-    --height-header: 100px;
+    --height-header: 120px;
     --main-colors: #161311;
     --container-color: #161311e0;
 }
@@ -110,7 +110,7 @@ header {
     width: 100%;
     top: 0px;
     left: 0px;
-    flex-direction: column;
+    /* flex-direction: column; */
     z-index: 99999;
     position: sticky;
     color: white;
@@ -132,8 +132,8 @@ header {
 }
 
 .Logo {
-    height: 140px;
-    width: 200px;
+    height: 100px;
+    width: 300px;
     margin-right: auto;
     margin-left: auto;
     background-image: url('../images/rafikilogo.svg');
@@ -145,13 +145,19 @@ nav {
     margin-top: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5px;
+    margin-bottom: auto;
     z-index: 5;
 }
 
 nav a {
     padding-right: 10px;
     padding-left: 10px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+nav a:hover {
+    color: #cfcfcfe0;
 }
 
 footer {
@@ -330,5 +336,27 @@ tr:nth-child(even) {
 
     footer #Socials {
         margin: 5px;
+    }
+}
+
+@media (max-width: 660px){
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-bottom: 5px;
+    }
+
+    .Logo {
+        width: 250px;
+        height: 200px;
+    }
+    
+}
+
+@media (max-width: 370px){
+    nav a {
+        font-size: 20px;
     }
 }

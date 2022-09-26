@@ -152,14 +152,14 @@ class CheckSiteAvailability(unittest.TestCase):
 
         # List of products
         products = {
-            "Capricciosa": ["skinka, champinjoner", "90 kr"], 
-            "Calzone": ["inbakad, skinka", "85 kr"], 
-            "Margherita": ["ost", "80 kr"],
-            "Hawaii": ["skinka, ananas", "90 kr"],
-            "Vesuvio": ["skinka", "85 kr"], 
+            "Capricciosa": ["Skinka, champinjoner", "90 kr"], 
+            "Calzone": ["Inbakad: skinka", "85 kr"], 
+            "Margherita": ["Ost", "80 kr"],
+            "Hawaii": ["Skinka, ananas", "90 kr"],
+            "Vesuvio": ["Skinka", "85 kr"], 
             "Extra topping": ["5 kr"],
-            "Pompei": ["bacon, rödlök, ägg, curry", "90 kr"],
-            "La Casa": ["champinjoner, räkor, skinka", "95 kr"]
+            "Pompei": ["Bacon, rödlök, ägg, curry", "90 kr"],
+            "La Casa": ["Skinka, champinjoner, räkor", "95 kr"]
         }
         products_table = self.browser.find_element(By.ID, "Products")
         page_products_element = products_table.find_elements(By.TAG_NAME, "tr")

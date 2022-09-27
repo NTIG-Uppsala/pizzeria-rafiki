@@ -90,6 +90,33 @@ class CheckSiteAvailability(unittest.TestCase):
             if current_day in listing_text:
                 self.assertIn(" ".join(open_hours[current_day]), listing_text)
 
+    def test_check_for_open_hours_persian(self):
+        self.browser.get(self.website_url + "index-per.html")
+
+        # Dict of open hours
+        open_hours = {
+            "Monday": ["دوشنبه","10-22"],
+            "Tuesday": ["سه شنبه","10-22"],
+            "Wedensday": ["چهارشنبه","10-22"],
+            "Thursday": ["پنجشنبه", "10-22"],
+            "Friday": ["جمعه", "10-23"],
+            "Saturday": ["شنبه", "12-23"],
+            "Sunday": ["یکشنبه", "12-20"],
+        }
+
+        # checks open hours
+        open_hours_table = self.browser.find_element(By.CLASS_NAME, "Openhours")
+        open_hours_elements = open_hours_table.find_elements(By.TAG_NAME, "tr")
+        for open_hour in open_hours_elements:
+            current_day = open_hour.get_attribute("data-day")
+            listing_text = open_hour.text
+            
+            # If a tr has no data-day attribute skip it
+            if isinstance(current_day, NoneType):
+                continue
+            if current_day in listing_text:
+                self.assertIn(" ".join(open_hours[current_day]), listing_text)
+
     
     def check_image(self, x):
 
@@ -160,6 +187,38 @@ class CheckSiteAvailability(unittest.TestCase):
             "Extra topping": ["5 kr"],
             "Pompei": ["Bacon, rödlök, ägg, curry", "90 kr"],
             "La Casa": ["Skinka, champinjoner, räkor", "95 kr"]
+        }
+        products_table = self.browser.find_element(By.ID, "Products")
+        page_products_element = products_table.find_elements(By.TAG_NAME, "tr")
+
+        # Loop through the products table element
+        for product in page_products_element:
+
+            # Get the data-pizza attribute value
+            pizza = product.get_attribute("data-pizza")
+            listing_text = product.text
+
+            # If the data attribute is a None Type, skip to the next element
+            if isinstance(pizza, NoneType):
+                continue
+
+            # Compare the Dictionary to the page value
+            if pizza in listing_text:
+                self.assertIn(" ".join(products[pizza]), listing_text)
+        
+    def test_check_for_products_persian(self):
+        self.browser.get(self.website_url + "index-per.html")
+
+        # List of products
+        products = {
+            "پیتزا قارچ و ژامبون": ["ژامبون, اسفنج", "90 kr"], 
+            "پیتزا کلزونه": ["پیتزای بسته: ژامبون", "85 kr"], 
+            "پیتزا مارگاریتا": ["پنیر", "80 kr"],
+            "پیتزای آناناس": ["ژامبون, آناناس", "90 kr"],
+            "پیتزا ژامبون": ["ژامبون", "85 kr"], 
+            "تاپینگ های اضافی": ["5 kr"],
+            "پیتزا بیکن و کاری": ["بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr"],
+            "پیتزا سرآشپز": ["ژامبون، قارچ، میگو", "95 kr"]
         }
         products_table = self.browser.find_element(By.ID, "Products")
         page_products_element = products_table.find_elements(By.TAG_NAME, "tr")

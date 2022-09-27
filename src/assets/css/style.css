@@ -21,11 +21,6 @@ html, body {
     padding: 0;
 }
 
-.langWrap{
-    display: flex;
-    justify-content: space-evenly;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -163,6 +158,12 @@ nav a {
 
 nav a:hover {
     color: #cfcfcfe0;
+}
+
+.BoxShadow img {
+    width: 42px;
+    height: 42px;
+    margin-top: 20px;
 }
 
 footer {

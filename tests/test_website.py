@@ -62,37 +62,86 @@ class CheckSiteAvailability(unittest.TestCase):
         for info_value in information.values():
             self.assertIn(info_value, body_text)
 
-    # Test for open hours
-    def test_check_for_open_hours(self):
+    # checks for important information on the website
+    def test_check_info_on_page(self):
         self.browser.get(self.website_url)
 
-        # Dict of open hours
-        open_hours = {
-            "Monday": ["Måndagar","10-22"],
-            "Tuesday": ["Tisdagar","10-22"],
-            "Wedensday": ["Onsdagar","10-22"],
-            "Thursday": ["Torsdagar", "10-22"],
-            "Friday": ["Fredagar", "10-23"],
-            "Saturday": ["Lördagar", "12-23"],
-            "Sunday": ["Söndagar", "12-20"],
-        }
+        openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
+        productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
 
-        # checks open hours
-        open_hours_table = self.browser.find_element(By.CLASS_NAME, "Openhours")
-        open_hours_elements = open_hours_table.find_elements(By.TAG_NAME, "tr")
-        for open_hour in open_hours_elements:
-            current_day = open_hour.get_attribute("data-day")
-            listing_text = open_hour.text
-            
-            # If a tr has no data-day attribute skip it
-            if isinstance(current_day, NoneType):
-                continue
-            if current_day in listing_text:
-                self.assertIn(" ".join(open_hours[current_day]), listing_text)
+      
+        products = [
+           "Pizza", "Pris",
+           "Margherita", "Ost", "80 kr",
+           "Calzone", "Inbakad: skinka", "85 kr",
+           "Vesuvio", "Skinka", "85 kr",
+           "Capricciosa", "Skinka, champinjoner", "90 kr",
+           "Hawaii", "Skinka, ananas", "90 kr",
+           "Pompei", "Bacon, rödlök, ägg, curry", "90 kr",
+           "La Casa", "Skinka, champinjoner, räkor", "95 kr",
+           "Extra topping", "5 kr"
+        ]
 
 
+        openHours = [
+            "Måndagar", "10 - 22",
+            "Tisdagar", "10 - 22",
+            "Onsdagar", "10 - 22",
+            "Torsdagar", "10 - 22",
+            "Fredagar", "10 - 23",
+            "Lördagar", "12 - 23",
+            "Söndagar", "12 - 20"
+        ]
 
-    
+        for hours in openHours:
+            self.assertIn(hours, openHourText)
+        print("Open hours found")
+
+        for product in products:
+            self.assertIn(product, productText)
+        print("Products found")
+
+   
+     # checks for important information on the website
+    def test_check_info_on_page_persian(self):
+        self.browser.get(self.website_url + "index-per.html")
+
+        openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
+        productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
+
+      
+        products = [
+           "پیتزا", "قیمت",
+           "پیتزا مارگاریتا", "پنیر", "80 kr",
+           "پیتزا کلزونه", "پیتزای بسته: ژامبون", "85 kr",
+           "پیتزا ژامبون", "ژامبون", "85 kr",
+           "پیتزا قارچ و ژامبون", "ژامبون, اسفنج", "90 kr",
+           "پیتزای آناناس", "ژامبون, آناناس", "90 kr",
+           "پیتزا بیکن و کاری", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr",
+           "پیتزا سرآشپز", "ژامبون، قارچ، میگو", "95 kr",
+           "تاپینگ های اضافی", "5 kr"
+        ]
+
+
+        openHours = [
+            "دوشنبه", "10 - 22",
+            "سه شنبه", "10 - 22",
+            "چهارشنبه", "10 - 22",
+            "پنجشنبه", "10 - 22",
+            "جمعه", "10 - 23",
+            "شنبه", "12 - 23",
+            "یکشنبه", "12 - 20"
+        ]
+
+        for hours in openHours:
+            self.assertIn(hours, openHourText)
+        print("Open hours found")
+
+        for product in products:
+            self.assertIn(product, productText)
+        print("Products found")
+
+
     def check_image(self, x):
 
         # get the elment with the Background class name
@@ -148,40 +197,8 @@ class CheckSiteAvailability(unittest.TestCase):
             self.assertIn('NTIuppsala', icon_href)
             self.assertIn(icon[1], icon_css_value)
 
-    
-    def test_check_for_products(self):
-        self.browser.get(self.website_url)
 
-        # List of products
-        products = {
-            "Capricciosa": ["Skinka, champinjoner", "90 kr"], 
-            "Calzone": ["Inbakad: skinka", "85 kr"], 
-            "Margherita": ["Ost", "80 kr"],
-            "Hawaii": ["Skinka, ananas", "90 kr"],
-            "Vesuvio": ["Skinka", "85 kr"], 
-            "Extra topping": ["5 kr"],
-            "Pompei": ["Bacon, rödlök, ägg, curry", "90 kr"],
-            "La Casa": ["Skinka, champinjoner, räkor", "95 kr"]
-        }
-        products_table = self.browser.find_element(By.ID, "Products")
-        page_products_element = products_table.find_elements(By.TAG_NAME, "tr")
-
-        # Loop through the products table element
-        for product in page_products_element:
-
-            # Get the data-pizza attribute value
-            pizza = product.get_attribute("data-pizza")
-            listing_text = product.text
-
-            # If the data attribute is a None Type, skip to the next element
-            if isinstance(pizza, NoneType):
-                continue
-
-            # Compare the Dictionary to the page value
-            if pizza in listing_text:
-                self.assertIn(" ".join(products[pizza]), listing_text)
-        
-    
+   
 
     def test_check_for_logo(self):
         self.browser.get(self.website_url)

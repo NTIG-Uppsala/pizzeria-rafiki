@@ -21,6 +21,11 @@ html, body {
     padding: 0;
 }
 
+.langWrap{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 body {
     display: flex;
     flex-direction: column;

@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/javascript/script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/images/rafikilogofavicon.png">
     <title>Pizzeria Rafiki</title>
 </head>
@@ -16,15 +15,19 @@
     <header class="BoxShadow">
         <a href="index.html" class="Logo"></a>
         <nav>
-            <a href="#Order">Beställ</a>
-            <a href="#OpenHours">Öppettider</a>
-            <a href="#navMap">Hitta hit</a>
+            <a class="orderNav" href="#Order">Beställ</a>
+            <a class="openHoursNav" href="#OpenHours">Öppettider</a>
+            <a class="mapNav" href="#navMap">Hitta hit</a>
         </nav>
     </header>
     <main>
         <div id="Order" class="Container BoxShadow">
+            <div class="langWrap">
+                <a href="#sve" language='swedish' class="active">SVE</a>
+                <a href="#per" language='persian'>مطابق</a>
+            </div>
             <div class="Title">
-                <h1>Beställ</h1>
+                <h1 class="order">Beställ</h1>
             </div>
             <div>
                 <a class="PhoneNumber" href="tel:0630-555-555">
@@ -38,49 +41,49 @@
                 </div>
             </div>
             <div class="Title">
-                <h1>Meny</h1>
+                <h1 class="menu">Meny</h1>
             </div>
             <div class="Wrapper">
                 <table id="Products">
                     <tr>
-                        <th>Pizza</th>
+                        <th class="product">Pizza</th>
                         <td></td>
-                        <th class="RightAlign">Pris</th>
+                        <th class="RightAlign priceTitle">Pris</th>
                     </tr>
                     <tr data-pizza="Margherita">
                         <th>Margherita</th>
                         <td>Ost</td>
-                        <td class="RightAlign">80 kr</td>
+                        <td class="RightAlign price">80 kr</td>
                     </tr>
                     <tr data-pizza="Calzone">
                         <th>Calzone</th>
                         <td>Inbakad: skinka</td>
-                        <td class="RightAlign">85 kr</td>
+                        <td class="RightAlign price">85 kr</td>
                     </tr>
                     <tr data-pizza="Vesuvio">
                         <th>Vesuvio</th>
                         <td>Skinka</td>
-                        <td class="RightAlign">85 kr</td>
+                        <td class="RightAlign price">85 kr</td>
                     </tr>
                     <tr data-pizza="Capricciosa">
                         <th>Capricciosa</th>
                         <td>Skinka, champinjoner</td>
-                        <td class="RightAlign">90 kr</td>
+                        <td class="RightAlign price">90 kr</td>
                     </tr>
                     <tr data-pizza="Hawaii">
                         <th>Hawaii</th>
                         <td>Skinka, ananas</td>
-                        <td class="RightAlign">90 kr</td>
+                        <td class="RightAlign price">90 kr</td>
                     </tr>
                     <tr data-pizza="Pompei">
                         <th>Pompei</th>
                         <td>Bacon, rödlök, ägg, curry</td>
-                        <td class="RightAlign">90 kr</td>
+                        <td class="RightAlign price">90 kr</td>
                     </tr>
                     <tr data-pizza="La Casa">
                         <th>La Casa</th>
                         <td>Skinka, champinjoner, räkor</td>
-                        <td class="RightAlign">95 kr</td>
+                        <td class="RightAlign price">95 kr</td>
                     </tr>
                     <tr>
                         <th>&nbsp;</th>
@@ -166,6 +169,7 @@
         </div>
         <div style="width: 33%;"></div>
     </footer>
+    <script src="assets/javascript/script.js"></script>
 </body>
 
 </html>

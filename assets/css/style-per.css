@@ -165,6 +165,13 @@ nav a:hover {
     color: #cfcfcfe0;
 }
 
+.BoxShadow img {
+    width: 42px;
+    height: 42px;
+    margin-top: 20px;
+}
+
+
 footer {
     display: flex;
     flex-direction: row;

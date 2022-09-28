@@ -101,46 +101,6 @@ class CheckSiteAvailability(unittest.TestCase):
             self.assertIn(product, productText)
         print("Products found")
 
-   
-     # checks for important information on the website
-    def test_check_info_on_page_persian(self):
-        self.browser.get(self.website_url + "index-per.html")
-
-        openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
-        productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
-
-      
-        products = [
-           "پیتزا", "قیمت",
-           "پیتزا مارگاریتا", "پنیر", "80 kr",
-           "پیتزا کلزونه", "پیتزای بسته: ژامبون", "85 kr",
-           "پیتزا ژامبون", "ژامبون", "85 kr",
-           "پیتزا قارچ و ژامبون", "ژامبون, اسفنج", "90 kr",
-           "پیتزای آناناس", "ژامبون, آناناس", "90 kr",
-           "پیتزا بیکن و کاری", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr",
-           "پیتزا سرآشپز", "ژامبون، قارچ، میگو", "95 kr",
-           "تاپینگ های اضافی", "5 kr"
-        ]
-
-
-        openHours = [
-            "دوشنبه", "10 - 22",
-            "سه شنبه", "10 - 22",
-            "چهارشنبه", "10 - 22",
-            "پنجشنبه", "10 - 22",
-            "جمعه", "10 - 23",
-            "شنبه", "12 - 23",
-            "یکشنبه", "12 - 20"
-        ]
-
-        for hours in openHours:
-            self.assertIn(hours, openHourText)
-        print("Open hours found")
-
-        for product in products:
-            self.assertIn(product, productText)
-        print("Products found")
-
 
     def check_image(self, x):
 
@@ -269,6 +229,71 @@ class CheckSiteAvailability(unittest.TestCase):
     def test_open_sign(self):
         self.browser.get(self.website_url)
         self.assertIn('öpp', self.browser.find_element(By.ID, "OpenSign").text)
+
+    # persian website tests
+
+    # checks for important information on the website
+    def test_check_info_on_page_persian(self):
+        self.browser.get(self.website_url + "index-per.html")
+
+        openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
+        productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
+
+      
+        products = [
+           "پیتزا", "قیمت",
+           "پیتزا مارگاریتا", "پنیر", "80 kr",
+           "پیتزا کلزونه", "پیتزای بسته: ژامبون", "85 kr",
+           "پیتزا ژامبون", "ژامبون", "85 kr",
+           "پیتزا قارچ و ژامبون", "ژامبون, اسفنج", "90 kr",
+           "پیتزای آناناس", "ژامبون, آناناس", "90 kr",
+           "پیتزا بیکن و کاری", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr",
+           "پیتزا سرآشپز", "ژامبون، قارچ، میگو", "95 kr",
+           "تاپینگ های اضافی", "5 kr"
+        ]
+
+
+        openHours = [
+            "دوشنبه", "10 - 22",
+            "سه شنبه", "10 - 22",
+            "چهارشنبه", "10 - 22",
+            "پنجشنبه", "10 - 22",
+            "جمعه", "10 - 23",
+            "شنبه", "12 - 23",
+            "یکشنبه", "12 - 20"
+        ]
+
+        for hours in openHours:
+            self.assertIn(hours, openHourText)
+        print("Open hours found")
+
+        for product in products:
+            self.assertIn(product, productText)
+        print("Products found")
+
+
+    def test_zipcodes_persian(self):
+        self.browser.get(self.website_url + "index-per.html")
+        zipcode = self.browser.find_element(By.ID, "number")
+        submitForm = self.browser.find_element(By.ID, "submit")
+
+        zipcodes = {
+            '-12345': 'کد پستی نیست',
+            'a12345': 'کد پستی نیست',
+            '1': 'کد پستی نیست',
+            '642 30': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '64230': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '642 38': 'متأسفانه ما به شما رانندگی نمی کنیم.',
+            '64238': 'متأسفانه ما به شما رانندگی نمی کنیم.',
+            '64239': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '642301': 'کد پستی نیست'
+        }
+
+        for code in zipcodes:
+            zipcode.clear()
+            zipcode.send_keys(code)
+            submitForm.click()
+            self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck").text)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

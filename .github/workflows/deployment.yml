@@ -43,7 +43,7 @@ jobs:
                 python -m http.server & 
 
             - name: Run Tests scripts on localhost
-              run: python tests/test_website.py http://localhost:8000 # Run the python script on the local webserver
+              run: python tests/test_website.py http://localhost:8000/ # Run the python script on the local webserver
     deploy:
         permissions:
           contents: write

@@ -13,7 +13,7 @@ zipCodeList = [
 ]
 
 var openHours = {
-    0: [12, 20, "Söndag"], //börjar på söndag
+    0: [12, 20, "Söndag"], //Starts on sunday
     1: [10, 22, "Måndag"],
     2: [10, 22, "Tisdag"],
     3: [10, 22, "Onsdag"],
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", (event) =>
         OpenSign = '<p>Vi har öppet just nu!</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }
-    else if(day + 1 === 7 && time >= openHours[day][1]){ //Hanterar lördagar efter stänging
+    else if(day + 1 === 7 && time >= openHours[day][1]){ //Handles saturdays after close
         OpenSign = '<p><span style="color: red; font-weight: bold;">STÄNGT!</span> Vi öppnar: ' + openHours[0][2] + " kl. " + openHours[0][0] + ":00" + '</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }

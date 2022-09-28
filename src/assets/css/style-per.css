@@ -305,11 +305,6 @@ th {
     white-space: nowrap;
 }
 
-.Padding-24 {
-    white-space: nowrap;
-    padding-right: 24px;
-}
-
 #Products {
     width: 100%;
 }
@@ -370,6 +365,12 @@ tr:nth-child(even) {
         height: 200px;
     }
     
+}
+
+@media (max-width: 560px) {
+    .topping {
+        padding: 15px;
+    }
 }
 
 @media (max-width: 370px){

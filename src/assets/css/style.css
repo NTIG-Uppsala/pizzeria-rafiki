@@ -74,7 +74,7 @@ main {
     left: 0;
     bottom: 0;
     right: 0;
-    animation: slider 30s infinite;
+    animation: slider 40s infinite;
 }
 
 @keyframes slider {

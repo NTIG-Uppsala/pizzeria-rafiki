@@ -13,7 +13,7 @@ zipCodeList = [
 ]
 
 var openHours = {
-    0: [12, 20, "Söndag"], //börjar på söndag
+    0: [12, 20, "Söndag"], //Starts on sunday
     1: [10, 22, "Måndag"],
     2: [10, 22, "Tisdag"],
     3: [10, 22, "Onsdag"],
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", (event) =>
         OpenSign = '<p>ما اکنون باز هستیم!</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }
-    else if(day + 1 === 7 && time >= openHours[day][1]){ //Hanterar lördagar efter stänging
+    else if(day + 1 === 7 && time >= openHours[day][1]){ //Handles saturdays after close
         OpenSign = '<p><span style="color: red; font-weight: bold;">بسته!</span> باز میکنیم: ' + openHours[0][2] + " kl. " + openHours[0][0] + ":00" + '</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", (event) =>
             document.querySelector("#output").innerHTML = "کد پستی نیست"
         }
         else if(zipCodeList.includes(zipInput)) {
-            document.querySelector("#output").innerHTML = "ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید!"
+            document.querySelector("#output").innerHTML = "ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید"
         }
         else {
             document.querySelector("#output").innerHTML = "متأسفانه ما به شما رانندگی نمی کنیم."

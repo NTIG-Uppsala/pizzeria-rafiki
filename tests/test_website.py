@@ -183,7 +183,7 @@ class CheckSiteAvailability(unittest.TestCase):
         header_icon_element = self.browser.find_element(By.CLASS_NAME, "Logo")
 
         # Checks if correct logo file is in src and href
-        self.assertIn('pizzaicon.png', favicon_element.get_attribute('href'))
+        self.assertIn('rafikilogofavicon.png', favicon_element.get_attribute('href'))
         self.assertIn('rafikilogo.svg', header_icon_element.value_of_css_property('background-image'))
 
     def test_for_large_images(self):

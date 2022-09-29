@@ -230,10 +230,7 @@ main > :last-child {
 
 }
 
-#flag {
-    display: flex;
-    justify-content: flex-end;
-}
+
 
 .Wrapper {
     display: flex;

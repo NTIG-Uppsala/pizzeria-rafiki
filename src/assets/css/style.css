@@ -114,6 +114,8 @@ header {
     background-color: #161311;
 }
 
+
+
 #number {
     background-color:#575453e0;
     color: white;
@@ -161,6 +163,7 @@ nav a:hover {
     width: 42px;
     height: 42px;
     margin-top: 20px;
+    
 }
 
 footer {

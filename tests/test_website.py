@@ -41,7 +41,22 @@ class CheckSiteAvailability(unittest.TestCase):
     # Test to check if "pizzeria rafiki" is in the <title> of the page
     def test_page_title(self):
         self.browser.get(self.website_url)
-        self.assertIn('Pizzeria Rafiki', self.browser.title) 
+        self.assertIn('Pizzeria Rafiki', self.browser.title)
+
+    # checks for empty links
+    def test_check_for_empty_links(self):
+        self.browser.get(self.website_url)
+
+        links = self.browser.find_elements(By.TAG_NAME, "a")
+
+        for link in links:
+            self.assertNotEqual(link.get_attribute("href").split("/")[-1], "#")
+            self.assertIsNotNone(link.get_attribute("href"))
+
+    # checks switch between websites
+    def test_swedish_to_persian(self):
+        self.browser.get(self.website_url)
+        self.assertIn((self.website_url + "index-per.html"), self.browser.find_element(By.ID, "flag").get_attribute("href"))
 
     # Test for contact information
     def test_check_for_contact(self):
@@ -232,6 +247,11 @@ class CheckSiteAvailability(unittest.TestCase):
 
     # persian website tests
 
+    # checks switch between websites
+    def test_persian_to_swedish(self):
+        self.browser.get(self.website_url + "index-per.html")
+        self.assertIn((self.website_url + "index.html"), self.browser.find_element(By.ID, "flag").get_attribute("href"))
+
     # checks for important information on the website
     def test_check_info_on_page_persian(self):
         self.browser.get(self.website_url + "index-per.html")
@@ -242,14 +262,14 @@ class CheckSiteAvailability(unittest.TestCase):
       
         products = [
            "پیتزا", "قیمت",
-           "پیتزا مارگاریتا", "پنیر", "80 sek",
-           "پیتزا کلزونه", "پیتزای بسته: ژامبون", "85 sek",
-           "پیتزا ژامبون", "ژامبون", "85 sek",
-           "پیتزا قارچ و ژامبون", "ژامبون, قارچ", "90 sek",
-           "پیتزای آناناس", "ژامبون, آناناس", "90 sek",
-           "پیتزا بیکن و کاری", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 sek",
-           "پیتزا سرآشپز", "ژامبون، قارچ، میگو", "95 sek",
-           "تاپینگ های اضافی", "5 sek"
+           "Margherita", "پنیر", "80 kr",
+           "Calzone", "پیتزای بسته: ژامبون", "85 kr",
+           "Vesuvio", "ژامبون", "85 kr",
+           "Capricciosa", "ژامبون, قارچ", "90 kr",
+           "Hawaii", "ژامبون, آناناس", "90 kr",
+           "Pompei", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr",
+           "La Casa", "ژامبون، قارچ، میگو", "95 kr",
+           "تاپینگ های اضافی", "5 kr"
         ]
 
 

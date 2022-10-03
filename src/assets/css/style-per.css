@@ -49,6 +49,36 @@ p, a, th, td {
     font-size: 20px;
 }
 
+.landingPage {
+    background-image: url("../images/landing-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: right;
+}
+
+.centeredText {
+    background-color: #161311;
+    padding: 20px;
+    margin-top: 250px;
+}
+
+.centeredText img {
+    width: 42px;
+    height: 42px;
+}
+
+.space {
+    background-color: #161311;
+    padding: 50px;
+    z-index: 1000;
+}
+
 main {
     flex-direction: column;
     align-items: center;
@@ -168,7 +198,6 @@ nav a:hover {
     margin-top: 20px;
 }
 
-
 footer {
     display: flex;
     flex-direction: row;
@@ -218,7 +247,7 @@ main > :last-child {
 }
 
 .Container {
-    width: 500px;
+    width: 700px;
     max-width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;

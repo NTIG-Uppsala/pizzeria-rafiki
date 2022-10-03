@@ -80,24 +80,31 @@ main {
 @keyframes slider {
     0%   { 
         background-image: url('../images/default.jpg');
+        opacity: 0;
     }
     5%, 28% {
         background-image: url('../images/background1.jpg');
+        opacity: 1;
     }
     33%  { 
         background-image: url('../images/default.jpg');
+        opacity: 0;
     }
     38%, 63%  {
         background-image: url('../images/background2.jpg');
+        opacity: 1;
     }
     68% { 
         background-image: url('../images/default.jpg');
+        opacity: 0;
     }
     73%, 96% {
         background-image: url('../images/background3.jpg');
+        opacity: 1;
     }
     100% {
         background-image: url('../images/default.jpg');
+        opacity: 0;
     }
 }
 

@@ -15,7 +15,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 class GlobalTest(unittest.TestCase):
     """
         Class to handle the tests for the website
@@ -39,13 +38,12 @@ class GlobalTest(unittest.TestCase):
             self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=run_options)
 
         self.pages = [
-            'index.html',
-            'lulea.html',
-            'flen.html'
+            'index-per.html',
+            'lulea-per.html',
+            'flen-per.html'
         ]
 
 
-        #self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
     @classmethod
     def tearDownClass(self):
         self.browser.quit()
@@ -127,7 +125,6 @@ class PageTests(unittest.TestCase):
     """
     website_url = "" # Standard URL placeholder 
 
-
     @classmethod
     def setUpClass(self):
 
@@ -147,7 +144,8 @@ class PageTests(unittest.TestCase):
     def tearDownClass(self):
         self.browser.quit()
 
-    #INDEX TESTS
+
+    #INDEX PERSIAN TESTS
 
     def test_check_side_links_to_flen_and_lulea(self):
         self.browser.get(self.website_url)
@@ -161,41 +159,43 @@ class PageTests(unittest.TestCase):
         for control_link in control_links:
             self.assertIn(control_link, ([link.get_attribute("href").split('/')[-1] for link in links]))
 
-    #FLEN TESTS
+    #FLEN PERSIAN TESTS
 
-    def test_swedish_to_persian_flen(self):
-        self.browser.get(self.website_url + "flen.html")
-        self.assertIn((self.website_url + "flen-per.html"), self.browser.find_element(By.ID, "flag").get_attribute("href"))
+    
+    # checks switch between websites
+    def test_persian_to_swedish(self):
+        self.browser.get(self.website_url + "flen-per.html")
+        self.assertIn((self.website_url + "flen.html"), self.browser.find_element(By.ID, "flag").get_attribute("href"))
 
-
-    def test_check_info_on_page_flen(self):
-        self.browser.get(self.website_url + "flen.html")
+    # checks for important information on the website
+    def test_check_info_on_flen_page_persian(self):
+        self.browser.get(self.website_url + "flen-per.html")
 
         openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
         productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
 
       
         products = [
-           "Pizza", "Pris",
-           "Margherita", "Ost", "80 kr",
-           "Calzone", "Inbakad: skinka", "85 kr",
-           "Vesuvio", "Skinka", "85 kr",
-           "Capricciosa", "Skinka, champinjoner", "90 kr",
-           "Hawaii", "Skinka, ananas", "90 kr",
-           "Pompei", "Bacon, rödlök, ägg, curry", "90 kr",
-           "La Casa", "Skinka, champinjoner, räkor", "95 kr",
-           "Extra topping", "5 kr"
+           "پیتزا", "قیمت",
+           "Margherita", "پنیر", "80 kr",
+           "Calzone", "پیتزای بسته: ژامبون", "85 kr",
+           "Vesuvio", "ژامبون", "85 kr",
+           "Capricciosa", "ژامبون, قارچ", "90 kr",
+           "Hawaii", "ژامبون, آناناس", "90 kr",
+           "Pompei", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr",
+           "La Casa", "ژامبون، قارچ، میگو", "95 kr",
+           "تاپینگ های اضافی", "5 kr"
         ]
 
 
         openHours = [
-            "Måndagar", "10 - 22",
-            "Tisdagar", "10 - 22",
-            "Onsdagar", "10 - 22",
-            "Torsdagar", "10 - 22",
-            "Fredagar", "10 - 23",
-            "Lördagar", "12 - 23",
-            "Söndagar", "12 - 20"
+            "دوشنبه", "10 - 22",
+            "سه شنبه", "10 - 22",
+            "چهارشنبه", "10 - 22",
+            "پنجشنبه", "10 - 22",
+            "جمعه", "10 - 23",
+            "شنبه", "12 - 23",
+            "یکشنبه", "12 - 20"
         ]
 
         for hours in openHours:
@@ -224,21 +224,21 @@ class PageTests(unittest.TestCase):
         for info_value in information.values():
             self.assertIn(info_value, body_text)
     
-    def test_zipcodes_flen(self):
-        self.browser.get(self.website_url + "flen.html")
+    def test_zipcodes_persian(self):
+        self.browser.get(self.website_url + "flen-per.html")
         zipcode = self.browser.find_element(By.ID, "number")
         submitForm = self.browser.find_element(By.ID, "submit")
 
         zipcodes = {
-            '-12345': 'Inte ett postnummer.',
-            'a12345': 'Inte ett postnummer.',
-            '1': 'Inte ett postnummer.',
-            '642 30': 'Vi kör ut, ring telefonnumret ovan!',
-            '64230': 'Vi kör ut, ring telefonnumret ovan!',
-            '642 38': 'Vi kör tyvärr inte ut till dig.',
-            '64238': 'Vi kör tyvärr inte ut till dig.',
-            '64239': 'Vi kör ut, ring telefonnumret ovan!',
-            '642301': 'Inte ett postnummer.'
+            '-12345': 'کد پستی نیست',
+            'a12345': 'کد پستی نیست',
+            '1': 'کد پستی نیست',
+            '642 30': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '64230': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '642 38': 'متأسفانه ما به شما رانندگی نمی کنیم.',
+            '64238': 'متأسفانه ما به شما رانندگی نمی کنیم.',
+            '64239': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '642301': 'کد پستی نیست'
         }
 
         for code in zipcodes:
@@ -247,45 +247,47 @@ class PageTests(unittest.TestCase):
             submitForm.click()
             self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck").text)
 
+
     def test_map_interactive_flen(self):
-        self.browser.get(self.website_url + "flen.html")
+        self.browser.get(self.website_url + "flen-per.html")
         self.browser.find_element(By.ID, "MapInteractive")
 
-    #LULEÅ TESTS
+    #LULEÅ PERSIAN TESTS
 
     def test_swedish_to_persian_lulea(self):
         self.browser.get(self.website_url + "lulea.html")
         self.assertIn((self.website_url + "lulea-per.html"), self.browser.find_element(By.ID, "flag").get_attribute("href"))
 
 
-    def test_check_info_on_page_lulea(self):
-        self.browser.get(self.website_url + "lulea.html")
+    # checks for important information on the website
+    def test_check_info_on_lulea_page_persian(self):
+        self.browser.get(self.website_url + "lulea-per.html")
 
         openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
         productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
 
       
         products = [
-           "Pizza", "Pris",
-           "Margherita", "Ost", "80 kr",
-           "Calzone", "Inbakad: skinka", "85 kr",
-           "Vesuvio", "Skinka", "85 kr",
-           "Capricciosa", "Skinka, champinjoner", "90 kr",
-           "Hawaii", "Skinka, ananas", "90 kr",
-           "Pompei", "Bacon, rödlök, ägg, curry", "90 kr",
-           "La Casa", "Skinka, champinjoner, räkor", "95 kr",
-           "Extra topping", "5 kr"
+           "پیتزا", "قیمت",
+           "Margherita", "پنیر", "80 kr",
+           "Calzone", "پیتزای بسته: ژامبون", "85 kr",
+           "Vesuvio", "ژامبون", "85 kr",
+           "Capricciosa", "ژامبون, قارچ", "90 kr",
+           "Hawaii", "ژامبون, آناناس", "90 kr",
+           "Pompei", "بیکن، پیاز قرمز، تخم مرغ، کاری", "90 kr",
+           "La Casa", "ژامبون، قارچ، میگو", "95 kr",
+           "تاپینگ های اضافی", "5 kr"
         ]
 
 
         openHours = [
-            "Måndagar", "10 - 22",
-            "Tisdagar", "10 - 22",
-            "Onsdagar", "10 - 24",
-            "Torsdagar", "10 - 22",
-            "Fredagar", "10 - 03",
-            "Lördagar", "12 - 04",
-            "Söndagar", "12 - 23"
+            "دوشنبه", "10 - 22",
+            "سه شنبه", "10 - 22",
+            "چهارشنبه", "10 - 24",
+            "پنجشنبه", "10 - 22",
+            "جمعه", "10 - 03",
+            "شنبه", "12 - 04",
+            "یکشنبه", "12 - 23"
         ]
 
         for hours in openHours:
@@ -302,7 +304,7 @@ class PageTests(unittest.TestCase):
             "adress": "Färjledsvägen 38 961 93 Södra Sunderbyn Luleå",
             "mail_adress": "lulea@rafiki.se"
         }
-        self.browser.get(self.website_url + "lulea.html")
+        self.browser.get(self.website_url + "lulea-per.html")
         
         self.assertIn('mailto:lulea@rafiki.se', self.browser.find_element(By.ID, "MailAdress").get_attribute("href"))
         self.assertIn('tel:0640-555-333', self.browser.find_element(By.CLASS_NAME, "PhoneNumber").get_attribute("href"))
@@ -315,20 +317,20 @@ class PageTests(unittest.TestCase):
             self.assertIn(info_value, body_text)
     
     def test_zipcodes_lulea(self):
-        self.browser.get(self.website_url + "lulea.html")
+        self.browser.get(self.website_url + "lulea-per.html")
         zipcode = self.browser.find_element(By.ID, "number")
         submitForm = self.browser.find_element(By.ID, "submit")
 
         zipcodes = {
-            '-12345': 'Inte ett postnummer.',
-            'a12345': 'Inte ett postnummer.',
-            '1': 'Inte ett postnummer.',
-            '961 90': 'Vi kör ut, ring telefonnumret ovan!',
-            '96190': 'Vi kör ut, ring telefonnumret ovan!',
-            '961 98': 'Vi kör tyvärr inte ut till dig.',
-            '96198': 'Vi kör tyvärr inte ut till dig.',
-            '96193': 'Vi kör ut, ring telefonnumret ovan!',
-            '961901': 'Inte ett postnummer.'
+            '-12345': 'کد پستی نیست',
+            'a12345': 'کد پستی نیست',
+            '1': 'کد پستی نیست',
+            '961 90': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '96190': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '961 98': 'متأسفانه ما به شما رانندگی نمی کنیم.',
+            '96198': 'متأسفانه ما به شما رانندگی نمی کنیم.',
+            '96193': 'ما به سمت شما رانندگی می کنیم، با شماره تلفن بالا تماس بگیرید',
+            '961901': 'کد پستی نیست'
         }
 
         for code in zipcodes:
@@ -338,7 +340,7 @@ class PageTests(unittest.TestCase):
             self.assertIn(zipcodes[code], self.browser.find_element(By.ID, "jsCheck").text)
 
     def test_map_interactive_lulea(self):
-        self.browser.get(self.website_url + "lulea.html")
+        self.browser.get(self.website_url + "lulea-per.html")
         self.browser.find_element(By.ID, "MapInteractive")
 
     

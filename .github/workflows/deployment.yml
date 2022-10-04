@@ -42,8 +42,11 @@ jobs:
                 cd src/
                 python -m http.server & 
 
-            - name: Run Tests scripts on localhost
+            - name: Run Swedish Tests scripts on localhost 
               run: python tests/test_website.py http://localhost:8000/ # Run the python script on the local webserver
+
+            - name: Run Persian Tests scripts on localhost
+              run: python tests/test_website_per.py http://localhost:8000/
     deploy:
         permissions:
           contents: write

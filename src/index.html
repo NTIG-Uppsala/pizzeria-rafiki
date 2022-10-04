@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home/home_style.css">
     <link rel="icon" type="image/x-icon" href="assets/images/rafikilogo.png">
     <title>Pizzeria Rafiki</title>
 </head>
@@ -21,147 +21,42 @@
         </nav>
     </header>
     <div class="landingPage">
-        <div class="centeredText">
-            <a id="flag" href="index-per.html"><img src="assets/images/iranflag.png" alt="iran flagga"></a>
-            <div class="Title">
-                <h1>Vill du beställa?</h1>
-                <p>Ring oss!</p>
-            </div>
-            <div>
-                <a class="PhoneNumber" href="tel:0630-555-555">
-                    0630-555-555
+        <div class="Container">
+            <a id="flag" href="#"><img src="assets/images/iranflag.png" alt="iran flagga"></a>
+            <h1 style="text-align: center;">Våra pizzerior</h1>
+            <div class="cards">
+                <a href="flen.html" target="_blank">
+                    <div class="card">
+                    <img src="assets/images/background1.jpg" alt="..." class="card-img-top">
+                    <div class="card-body">
+                        <h2 class="card-title">Flen</h2>
+                        <p>
+                            Kungsvägen 2B <br>
+                            642 34 Flen
+                        </p>
+                    </div>
+                    </div>
                 </a>
-                <div id="postnummerCheck">
-                    <div id="jsCheck"></div>
-                    <noscript>
-                        <p>Vi levererar till <a href="postnummer/postnummer.html">dessa postnummer!</a></p>
-                    </noscript>
-                </div>
-            </div> 
+                
+                <a href="lulea.html" target="_blank">
+                    <div class="card">
+                    <img src="assets/images/background2.jpg" alt="..." class="card-img-top">
+                    <div class="card-body">
+                        <h2 class="card-title">Luleå</h2>
+                        <p>
+                            Färjledsvägen 38 <br> 
+                            961 93 Södra Sunderbyn Luleå
+                        </p>
+                    </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="space"></div>
-    <main>
-        <div id="Order" class="Container BoxShadow">
-            <div class="Title">
-                <h1>Meny</h1>
-            </div>
-            <div class="Wrapper">
-                <table class="products" id="Products">
-                    <tr>
-                        <th>Pizza</th>
-                        <td></td>
-                        <th class="RightAlign">Pris</th>
-                    </tr>
-                    <tr>
-                        <th>Margherita</th>
-                        <td>Ost</td>
-                        <td class="RightAlign">80 kr</td>
-                    </tr>
-                    <tr>
-                        <th>Calzone</th>
-                        <td>Inbakad: skinka</td>
-                        <td class="RightAlign">85 kr</td>
-                    </tr>
-                    <tr>
-                        <th>Vesuvio</th>
-                        <td>Skinka</td>
-                        <td class="RightAlign">85 kr</td>
-                    </tr>
-                    <tr>
-                        <th>Capricciosa</th>
-                        <td>Skinka, champinjoner</td>
-                        <td class="RightAlign">90 kr</td>
-                    </tr>
-                    <tr>
-                        <th>Hawaii</th>
-                        <td>Skinka, ananas</td>
-                        <td class="RightAlign">90 kr</td>
-                    </tr>
-                    <tr>
-                        <th>Pompei</th>
-                        <td>Bacon, rödlök, ägg, curry</td>
-                        <td class="RightAlign">90 kr</td>
-                    </tr>
-                    <tr>
-                        <th>La Casa</th>
-                        <td>Skinka, champinjoner, räkor</td>
-                        <td class="RightAlign">95 kr</td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>Extra topping</th>
-                        <td></td>
-                        <td class="RightAlign">5 kr</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div id="OpenHours" class="Container BoxShadow">
-            <div class="Title">
-                <h1>Öppettider</h1>
-            </div>
-            <div id="OpenSign"></div>
-            <div class="Wrapper">
-                <table class="Openhours">
-                    <tr>
-                        <th>Måndagar</th>
-                        <td class="RightAlign">10 - 22</td>
-                    </tr>
-                    <tr>
-                        <th>Tisdagar</th>
-                        <td class="RightAlign">10 - 22</td>
-                    </tr>
-                    <tr>
-                        <th>Onsdagar</th>
-                        <td class="RightAlign">10 - 22</td>
-                    </tr>
-                    <tr>
-                        <th>Torsdagar</th>
-                        <td class="RightAlign">10 - 22</td>
-                    </tr>
-                    <tr>
-                        <th>Fredagar</th>
-                        <td class="RightAlign">10 - 23</td>
-                    </tr>
-                    <tr>
-                        <th>Lördagar</th>
-                        <td class="RightAlign">12 - 23</td>
-                    </tr>
-                    <tr>
-                        <th>Söndagar</th>
-                        <td class="RightAlign">12 - 20</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="Container BoxShadow" id="navMap">
-            <div class="Title">
-                <h1>Hitta hit</h1>
-            </div>
-            <div id="mapadress">
-                <p>
-                    Kungsvägen 2B <br>
-                    642 34 Flen
-                </p>
-                <noscript>
-                    <a href="assets/images/karta.jpg"><img src="assets/images/karta.jpg" alt="karta" id="Map"></a>
-                </noscript>
-            </div>
-        </div>
-    </main>
     <footer class="BoxShadow">
         <div class="FooterLeft">
             <p><a href="mailto:info@rafiki.se" id="MailAdress">info@rafiki.se</a><br>
             <a class="PhoneNumber" href="tel:0630-555-555">0630-555-555</a></p>
-            <p style="margin-left: 5px;">
-                Kungsvägen 2B <br>
-                642 34 Flen
-            </p>
         </div>
         <div id="Socials" class="FooterItem" style="width: 34%;">
             <div>

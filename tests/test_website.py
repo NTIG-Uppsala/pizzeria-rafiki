@@ -15,6 +15,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+#tests for flen
+
 class CheckSiteAvailability(unittest.TestCase):
     """
         Class to handle the tests for the website

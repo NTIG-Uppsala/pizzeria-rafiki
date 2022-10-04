@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/flen/flen_style-per.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/rafikilogo.png">
+    <title>Pizzeria Rafiki</title>
+</head>
+
+<body>
+    <header class="BoxShadow">
+        <a href="index-per.html" class="Logo"></a>
+        <nav>
+            <a href="#Order">سفارش</a>
+            <a href="#OpenHours">ساعت خدمات</a>
+            <a href="#navMap">پیدا کردن ما</a>
+        </nav>
+    </header>
+    <div class="landingPage">
+        <div class="Container">
+            <a id="flag" href="flen.html"><img src="assets/images/swedishflag.png" alt="sverige flagga"></a>
+            <h1 style="font-size: 40px; text-align: center;">Flen</h1>
+            <div class="Title">
+                <h1>آیا می خواهید سفارش دهید؟</h1>
+                <p>با ما تماس بگیرید</p>
+            </div>
+            <div>
+                <a class="PhoneNumber" href="tel:0630-555-555">
+                    0630-555-555
+                </a>
+                <div id="postnummerCheck">
+                    <div id="jsCheck"></div>
+                    <noscript>
+                        <p>تحویل می دهیم به <a href="postnummer/flen_postnummer-per.html">این کدهای پستی</a></p>
+                    </noscript>
+                </div>
+                <div class="menuButton">
+                    <a class="button" href="#Order">منو را ببینید</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space"></div>
+    <main>
+        <div id="Order" class="Container BoxShadow">
+            <div class="Title">
+                <h1>منو</h1>
+            </div>
+            <div class="Wrapper">
+                <table class="products" id="Products">
+                    <tr>
+                        <th>قیمت</th>
+                        <td></td>
+                        <th class="RightAlign">پیتزا</th>
+                    </tr>
+                    <!-- Margherita -->
+                    <tr>
+                        <th>80 kr</th>
+                        <td class="topping">پنیر</td>
+                        <td class="RightAlign">Margherita</td>
+                    </tr>
+                    <!-- Calzone -->
+                    <tr>
+                        <th>85 kr</th>
+                        <td class="topping">پیتزای بسته: ژامبون</td>
+                        <td class="RightAlign">Calzone</td>
+                    </tr>
+                    <!-- Vesuvio -->
+                    <tr>
+                        <th>85 kr</th>
+                        <td class="topping">ژامبون</td>
+                        <td class="RightAlign">Vesuvio</td>
+                    </tr>
+                    <!-- Capricciosa -->
+                    <tr>
+                        <th>90 kr</th>
+                        <td class="topping">ژامبون, قارچ</td>
+                        <td class="RightAlign">Capricciosa</td>
+                    </tr>
+                    <!-- Hawaii -->
+                    <tr>
+                        <th>90 kr</th>
+                        <td class="topping">ژامبون, آناناس</td>
+                        <td class="RightAlign">Hawaii</td>
+                    </tr>
+                    <!-- Pompei -->
+                    <tr>
+                        <th>90 kr</th>
+                        <td class="topping">بیکن، پیاز قرمز، تخم مرغ، کاری</td>
+                        <td class="RightAlign">Pompei</td>
+                    </tr>
+                    <!-- La Casa -->
+                    <tr>
+                        <th>95 kr</th>
+                        <td class="topping">ژامبون، قارچ، میگو</td>
+                        <td class="RightAlign">La Casa</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- Extra topping -->
+                    <tr>
+                        <th>5 kr</th>
+                        <td></td>
+                        <td class="RightAlign">تاپینگ های اضافی</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="OpenHours" class="Container BoxShadow">
+            <div class="Title">
+                <h1>ساعت خدمات</h1>
+            </div>
+            <div id="OpenSign"></div>
+            <div class="Wrapper">
+                <table class="Openhours">
+                    <!-- Monday -->
+                    <tr>
+                        <th>10 - 22</th>
+                        <td class="RightAlign">دوشنبه</td>
+                    </tr>
+                    <!-- Tuesday -->
+                    <tr>
+                        <th>10 - 22</th>
+                        <td class="RightAlign">سه شنبه</td>
+                    </tr>
+                    <!-- Wedensday -->
+                    <tr>
+                        <th>10 - 22</th>
+                        <td class="RightAlign">چهارشنبه</td>
+                    </tr>
+                    <!-- Thursday -->
+                    <tr>
+                        <th>10 - 22</th>
+                        <td class="RightAlign">پنجشنبه</td>
+                    </tr>
+                    <!-- Friday -->
+                    <tr>
+                        <th>10 - 23</th>
+                        <td class="RightAlign">جمعه</td>
+                    </tr>
+                    <!-- Saturday -->
+                    <tr>
+                        <th>12 - 23</th>
+                        <td class="RightAlign">شنبه</td>
+                    </tr>
+                    <!-- Sunday -->
+                    <tr>
+                        <th>12 - 20</th>
+                        <td class="RightAlign">یکشنبه</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="Container BoxShadow" id="navMap">
+            <div class="Title">
+                <h1>پیدا کردن ما</h1>
+            </div>
+            <div id="mapadress">
+                <p>
+                    Kungsvägen 2B <br>
+                    642 34 Flen
+                </p>
+                <noscript>
+                    <a href="assets/images/karta.jpg"><img src="assets/images/karta.jpg" alt="karta" id="Map"></a>
+                </noscript>
+            </div>
+        </div>
+    </main>
+    <footer class="BoxShadow">
+        <div class="FooterLeft">
+            <p><a href="mailto:info@rafiki.se" id="MailAdress">info@rafiki.se</a><br>
+            <a class="PhoneNumber" href="tel:0630-555-555">0630-555-555</a></p>
+            <p style="margin-left: 5px;">
+                Kungsvägen 2B <br>
+                642 34 Flen
+            </p>
+        </div>
+        <div id="Socials" class="FooterItem" style="width: 34%;">
+            <div>
+                <a class="Icon FacebookIcon" href="https://facebook.com/NTIuppsala" target="_blank"></a>
+                <a class="Icon TwitterIcon" href="https://twitter.com/NTIuppsala" target="_blank"></a>
+                <a class="Icon InstagramIcon" href="https://instagram.com/NTIuppsala" target="_blank"></a>
+            </div>
+        </div>
+        <div style="width: 33%;"></div>
+    </footer>
+    <script src="assets/javascript/flen_script-per.js"></script>
+</body>
+
+</html>

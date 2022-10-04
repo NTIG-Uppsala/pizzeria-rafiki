@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/lulea/lulea_style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/rafikilogo.png">
+    <title>Pizzeria Rafiki</title>
+</head>
+
+<body>
+    <header class="BoxShadow">
+        <a href="lulea.html" class="Logo"></a>
+        <nav>
+            <a href="#Order">Meny</a>
+            <a href="#OpenHours">Öppettider</a>
+            <a href="#navMap">Hitta hit</a>
+        </nav>
+    </header>
+    <div class="landingPage">
+        <div class="Container">
+            <a id="flag" href="lulea-per.html"><img src="assets/images/iranflag.png" alt="iran flagga"></a>
+            <h1 style="font-size: 40px; text-align: center;">Luleå</h1>
+            <div class="Title">
+                <h2>Vill du beställa?</h2>
+                <p>Ring oss!</p>
+            </div>
+            <div>
+                <a class="PhoneNumber" href="tel:0640-555-333">
+                    0640-555-333
+                </a>
+                <div id="postnummerCheck">
+                    <div id="jsCheck"></div>
+                    <noscript>
+                        <p>Vi levererar till <a href="postnummer/lulea_postnummer.html">dessa postnummer!</a></p>
+                    </noscript>
+                </div>
+                <div class="menuButton">
+                    <a class="button" href="#Order">Se Meny</a>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <main>
+        <div id="Order" class="Container BoxShadow">
+            <div class="Title">
+                <h1>Meny</h1>
+            </div>
+            <div class="Wrapper">
+                <table class="products" id="Products">
+                    <tr>
+                        <th>Pizza</th>
+                        <td></td>
+                        <th class="RightAlign">Pris</th>
+                    </tr>
+                    <tr>
+                        <th>Margherita</th>
+                        <td>Ost</td>
+                        <td class="RightAlign">80 kr</td>
+                    </tr>
+                    <tr>
+                        <th>Calzone</th>
+                        <td>Inbakad: skinka</td>
+                        <td class="RightAlign">85 kr</td>
+                    </tr>
+                    <tr>
+                        <th>Vesuvio</th>
+                        <td>Skinka</td>
+                        <td class="RightAlign">85 kr</td>
+                    </tr>
+                    <tr>
+                        <th>Capricciosa</th>
+                        <td>Skinka, champinjoner</td>
+                        <td class="RightAlign">90 kr</td>
+                    </tr>
+                    <tr>
+                        <th>Hawaii</th>
+                        <td>Skinka, ananas</td>
+                        <td class="RightAlign">90 kr</td>
+                    </tr>
+                    <tr>
+                        <th>Pompei</th>
+                        <td>Bacon, rödlök, ägg, curry</td>
+                        <td class="RightAlign">90 kr</td>
+                    </tr>
+                    <tr>
+                        <th>La Casa</th>
+                        <td>Skinka, champinjoner, räkor</td>
+                        <td class="RightAlign">95 kr</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Extra topping</th>
+                        <td></td>
+                        <td class="RightAlign">5 kr</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="OpenHours" class="Container BoxShadow">
+            <div class="Title">
+                <h1>Öppettider</h1>
+            </div>
+            <div id="OpenSign"></div>
+            <div class="Wrapper">
+                <table class="Openhours">
+                    <tr>
+                        <th>Måndagar</th>
+                        <td class="RightAlign">10 - 22</td>
+                    </tr>
+                    <tr>
+                        <th>Tisdagar</th>
+                        <td class="RightAlign">10 - 22</td>
+                    </tr>
+                    <tr>
+                        <th>Onsdagar</th>
+                        <td class="RightAlign">10 - 24</td>
+                    </tr>
+                    <tr>
+                        <th>Torsdagar</th>
+                        <td class="RightAlign">10 - 22</td>
+                    </tr>
+                    <tr>
+                        <th>Fredagar</th>
+                        <td class="RightAlign">10 - 03</td>
+                    </tr>
+                    <tr>
+                        <th>Lördagar</th>
+                        <td class="RightAlign">12 - 04</td>
+                    </tr>
+                    <tr>
+                        <th>Söndagar</th>
+                        <td class="RightAlign">12 - 23</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="Container BoxShadow" id="navMap">
+            <div class="Title">
+                <h1>Hitta hit</h1>
+            </div>
+            <div id="mapadress">
+                <p>
+                    Färjledsvägen 38 <br> 
+                    961 93 Södra Sunderbyn Luleå
+                </p>
+                <noscript>
+                    <a href="assets/images/karta_lulea.JPG"><img src="assets/images/karta_lulea.JPG" alt="karta" id="Map"></a>
+                </noscript>
+            </div>
+        </div>
+    </main>
+    <footer class="BoxShadow">
+        <div class="FooterLeft">
+            <p><a href="mailto:info@rafiki.se" id="MailAdress">lulea@rafiki.se</a><br>
+            <a class="PhoneNumber" href="tel:0630-555-555">0630-555-555</a></p>
+            <p style="margin-left: 5px;">
+                Färjledsvägen 38 <br> 
+                961 93 Södra Sunderbyn Luleå
+            </p>
+        </div>
+        <div id="Socials" class="FooterItem" style="width: 34%;">
+            <div>
+                <a class="Icon FacebookIcon" href="https://facebook.com/NTIuppsala" target="_blank"></a>
+                <a class="Icon TwitterIcon" href="https://twitter.com/NTIuppsala" target="_blank"></a>
+                <a class="Icon InstagramIcon" href="https://instagram.com/NTIuppsala" target="_blank"></a>
+            </div>
+        </div>
+        <div style="width: 33%;"></div>
+    </footer>
+    <script src="assets/javascript/lulea_script.js"></script>
+</body>
+
+</html>

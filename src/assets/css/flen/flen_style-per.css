@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Quicksand';
-    src: url('../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+    src: url('../../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
     font-weight:100;
     font-style: normal;
 }
@@ -21,15 +21,16 @@ html, body {
     padding: 0;
 }
 
+.langWrap{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 body {
     display: flex;
     flex-direction: column;
     background-color: black;
 
-    /* For pre-loading images */
-    content:   
-        url('../images/background2.jpg')
-        url('../images/background3.jpg');
 }
 
 p, a, h1, h2, h3, h4, th, td {
@@ -45,34 +46,37 @@ p, a, th, td {
 }
 
 .landingPage {
-    background-image: url("../images/landing-bg.jpg");
+    background-image: url("../../images/background2.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 91vh;
     z-index: 10;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: right;
 }
 
-.centeredText {
-    background-color: #161311;
-    padding: 20px;
-    margin-top: 250px;
+.menuButton {
+    display: flex;
+    justify-content: center;
 }
 
-.centeredText img {
-    width: 42px;
-    height: 42px;
-}
+.button {
+    border: none;
+    color: white;
+    background-color: brown;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
 
-.space {
-    background-color: #161311;
-    padding: 50px;
-    z-index: 1000;
-}
 
 main {
     flex-direction: column;
@@ -84,52 +88,6 @@ main {
     min-width: 350px; 
 }
 
-.Background {
-    /* Background image */
-    background-image: url('../images/default.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 100vh;
-
-    /*  Blur effect */
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
-
-    /* Positioning */
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    animation: slider 40s infinite;
-}
-
-@keyframes slider {
-    0%   { 
-        background-image: url('../images/default.jpg');
-    }
-    5%, 28% {
-        background-image: url('../images/background1.jpg');
-    }
-    33%  { 
-        background-image: url('../images/default.jpg');
-    }
-    38%, 63%  {
-        background-image: url('../images/background2.jpg');
-    }
-    68% { 
-        background-image: url('../images/default.jpg');
-    }
-    73%, 96% {
-        background-image: url('../images/background3.jpg');
-    }
-    100% {
-        background-image: url('../images/default.jpg');
-    }
-}
 
 header {
     display: flex;
@@ -163,7 +121,7 @@ header {
     width: 300px;
     margin-right: auto;
     margin-left: auto;
-    background-image: url('../images/rafikilogo.svg');
+    background-image: url('../../images/rafikilogo.svg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -187,7 +145,7 @@ nav a:hover {
     color: #cfcfcfe0;
 }
 
-.BoxShadow img {
+.Container img {
     width: 42px;
     height: 42px;
     margin-top: 20px;
@@ -251,7 +209,7 @@ main > :last-child {
     padding-bottom: 25px;
     background-color: #161311e0;
     z-index: 3;
-    justify-content: center;
+    text-align: right;
     /* 
         Set the scroll margin top on all containers, also added 2.5em for som room over the element
         Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
@@ -259,8 +217,6 @@ main > :last-child {
     scroll-margin-top: calc(var(--height-header) + 2.5em);
 
 }
-
-
 
 .Wrapper {
     display: flex;
@@ -281,17 +237,17 @@ main > :last-child {
 }
 
 .TwitterIcon {
-    background-image: url('../images/twitter-fill.svg');
+    background-image: url('../../images/twitter-fill.svg');
     background-repeat: no-repeat;
 }
 
 .FacebookIcon {
-    background-image: url('../images/facebook-circle-fill.svg');
+    background-image: url('../../images/facebook-circle-fill.svg');
     background-repeat: no-repeat;
 }
 
 .InstagramIcon {
-    background-image: url('../images/instagram-fill.svg');
+    background-image: url('../../images/instagram-fill.svg');
     background-repeat: no-repeat;
 }
 
@@ -391,8 +347,14 @@ tr:nth-child(even) {
     
 }
 
-@media (max-width: 370px){
+@media (max-width: 560px) {
+    .topping {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 410px){
     nav a {
-        font-size: 20px;
+        font-size: 17px;
     }
 }

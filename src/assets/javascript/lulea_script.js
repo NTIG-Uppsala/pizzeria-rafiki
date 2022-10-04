@@ -25,7 +25,7 @@ let OpenSign = null;
 
 document.addEventListener("DOMContentLoaded", (event) => 
 {
-    let htmlIframeString = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1643.0857221286803!2d21.84887801662537!3d65.68080409348582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x467f677c34b6b1af%3A0x493f441e2dee92f!2sF%C3%A4rjledsv%C3%A4gen%2038%2C%20961%2093%20S%C3%B6dra%20Sunderbyn!5e0!3m2!1ssv!2sse!4v1664867957394!5m2!1ssv!2sse"  style="border: 0; width: 100%; height: 300px;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+    let htmlIframeString = `<iframe id="MapInteractive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1643.0857221286803!2d21.84887801662537!3d65.68080409348582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x467f677c34b6b1af%3A0x493f441e2dee92f!2sF%C3%A4rjledsv%C3%A4gen%2038%2C%20961%2093%20S%C3%B6dra%20Sunderbyn!5e0!3m2!1ssv!2sse!4v1664867957394!5m2!1ssv!2sse"  style="border: 0; width: 100%; height: 300px;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>`
     document.querySelector("#mapadress").innerHTML += htmlIframeString
 
     let htmlZipcodeCheck = '<p>Skriv ditt postnummer för att se om vi kör ut till dig!</p><form action=""><input type="text" inputmode="numeric" id="number" placeholder="961 90"><input class="checkNumber" id="submit" type="submit" value="Kolla"></form><p id="output"></p>'

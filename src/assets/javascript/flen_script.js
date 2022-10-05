@@ -94,7 +94,7 @@ const closed_days = [
     { title: 'Första maj', month_worded: "Maj", month: 5, day: 1  },
     { title: 'Julafton', month_worded: "December", month: 12, day: 24 },
     { title: 'Juldagen', month_worded: "December", month: 12, day: 25 },
-    { title: 'Annandag jul', month_worded: "December", month: 12, day: 26 },
+    { title: 'Annandag jul', month_worded: "December", month: 12, day: 26 }
 ];
 
 /* Sort closing days */
@@ -134,7 +134,6 @@ for(let i = 0; i < dateArr.length; i++){
     closed_days_element.innerHTML += `
         <tr>
             <th>${dateArr[i].title}</th>
-            <td></td>
             <td class="RightAlign">${dateArr[i].day} ${dateArr[i].month_worded}</td>
         </tr>
     `

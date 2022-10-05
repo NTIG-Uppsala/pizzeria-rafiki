@@ -274,25 +274,6 @@ main > :last-child {
     scroll-margin-top: calc(var(--height-header) + 2.5em);
 }
 
-.homeContainer {
-    width: 700px;
-    max-width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    background-color: #161311e0;
-    z-index: 3;
-    justify-content: center;
-    text-align: right;
-    /* 
-        Set the scroll margin top on all containers, also added 2.5em for som room over the element
-        Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
-    */
-    scroll-margin-top: calc(var(--height-header) + 2.5em);
-}
-
 
 
 .Wrapper {
@@ -302,6 +283,10 @@ main > :last-child {
 }
 
 .Openhours {
+    width: 100%;
+}
+
+.holidays {
     width: 100%;
 }
 
@@ -382,6 +367,12 @@ tr:nth-child(even) {
 @media (max-width: 800px) {
     .Container {
         max-width: 75vw;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
     }
     /* Change layout of the footer to columns instead of row */
     footer {

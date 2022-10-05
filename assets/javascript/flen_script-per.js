@@ -23,6 +23,8 @@ var openHours = {
 }
 
 let d = new Date();
+let month = d.getMonth() + 1;
+let date = d.getDate();
 let day = d.getDay();
 let time = d.getHours();
 let OpenSign = null;
@@ -35,8 +37,12 @@ document.addEventListener("DOMContentLoaded", (event) =>
 
     let htmlZipcodeCheck = '<p>کد پستی خود را وارد کنید تا ببینید آیا ما به شما تحویل می دهیم یا خیر!</p><form action=""><input type="text" inputmode="numeric" id="number" placeholder="642 30"><input class="checkNumber" id="submit" type="submit" value="بررسی"></form><p id="output"></p>'
     document.querySelector("#jsCheck").innerHTML = htmlZipcodeCheck
-   
-    if (openHours[day][0] <= time && time < openHours[day][1]){
+
+    if (month === 1 && date === 6 || month === 5 && date === 1 || month === 12 && date === 24 || month === 12 && date === 25 || month === 12 && date === 26) {
+        OpenSign = '<p><span style="color: red; font-weight: bold;">امروز بسته است</span></p>'
+        document.querySelector("#OpenSign").innerHTML = OpenSign
+    }
+    else if (openHours[day][0] <= time && time < openHours[day][1]){
         OpenSign = '<p>ما اکنون باز هستیم!</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }
@@ -75,4 +81,59 @@ document.addEventListener("DOMContentLoaded", (event) =>
         }
     })
 })
+
+//Sorts the dates accordeing to today
+const current_date = new Date();
+const current_day = current_date.getDay();
+const current_hour = current_date.getHours();
+const current_minute = current_date.getMinutes();
+const closed_days = [
+    { title: '۱۳ روز کریسمس', month_worded: "ژانویه", month: 1, day: 6 },
+    { title: 'اولین مه', month_worded: "مه", month: 5, day: 1  },
+    { title: 'کریسمس', month_worded: "دسامبر", month: 12, day: 24 },
+    { title: 'روز کریسمس', month_worded: "دسامبر", month: 12, day: 25 },
+    { title: 'روز باکس کریسمس', month_worded: "دسامبر", month: 12, day: 26 },
+];
+
+/* Sort closing days */
+let closed_days_element = document.querySelector('.holidays');
+closed_days_element.innerHTML = ''; // Clear inner table
+
+let currentMonth = parseInt(current_date.getMonth() + 1); //get month returns a value between 0 and 11. setting +1 gets the real month number.
+let currentDay = parseInt(current_date.getDate());
+
+let dateArr = [];
+
+let pastDates = [];
+let futureDates = [];
+
+for(let i = 0; i < closed_days.length; i++)
+{
+        if(closed_days[i].month <= currentMonth)
+        {
+            if(closed_days[i].day >= currentDay && closed_days[i].month == currentMonth)
+            {
+                dateArr.push(closed_days[i])
+            }
+            else 
+            {
+                pastDates.push(closed_days[i]);
+            }
+        }
+        else 
+        {
+        dateArr.push(closed_days[i]);
+        
+        }
+}
+dateArr = dateArr.concat(pastDates);
+
+for(let i = 0; i < dateArr.length; i++){
+    closed_days_element.innerHTML += `
+        <tr>
+            <th>${dateArr[i].day} ${dateArr[i].month_worded}</th>
+            <td class="RightAlign">${dateArr[i].title}</td>
+        </tr>
+    `
+}
 

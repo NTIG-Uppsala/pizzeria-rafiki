@@ -23,6 +23,8 @@ var openHours = {
 }
 
 let d = new Date();
+let month = d.getMonth() + 1;
+let date = d.getDate();
 let day = d.getDay();
 let time = d.getHours();
 let OpenSign = null;
@@ -35,8 +37,12 @@ document.addEventListener("DOMContentLoaded", (event) =>
 
     let htmlZipcodeCheck = '<p>کد پستی خود را وارد کنید تا ببینید آیا ما به شما تحویل می دهیم یا خیر!</p><form action=""><input type="text" inputmode="numeric" id="number" placeholder="642 30"><input class="checkNumber" id="submit" type="submit" value="بررسی"></form><p id="output"></p>'
     document.querySelector("#jsCheck").innerHTML = htmlZipcodeCheck
-   
-    if (openHours[day][0] <= time && time < openHours[day][1]){
+
+    if (month === 1 && date === 6 || month === 5 && date === 1 || month === 12 && date === 24 || month === 12 && date === 25 || month === 12 && date === 26) {
+        OpenSign = '<p><span style="color: red; font-weight: bold;">امروز بسته است</span></p>'
+        document.querySelector("#OpenSign").innerHTML = OpenSign
+    }
+    else if (openHours[day][0] <= time && time < openHours[day][1]){
         OpenSign = '<p>ما اکنون باز هستیم!</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }

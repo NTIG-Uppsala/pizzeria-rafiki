@@ -24,6 +24,8 @@ var openHours = {
 
 
 let d = new Date();
+let month = d.getMonth() + 1;
+let date = d.getDate();
 let day = d.getDay();
 let time = d.getHours();
 let OpenSign = null;
@@ -37,7 +39,12 @@ document.addEventListener("DOMContentLoaded", (event) =>
     let htmlZipcodeCheck = '<p>Skriv ditt postnummer för att se om vi kör ut till dig!</p><form action=""><input type="text" inputmode="numeric" id="number" placeholder="642 30"><input class="checkNumber" id="submit" type="submit" value="Kolla"></form><p id="output"></p>'
     document.querySelector("#jsCheck").innerHTML = htmlZipcodeCheck
    
-    if (openHours[day][0] <= time && time < openHours[day][1]){
+
+    if (month === 1 && date === 6 || month === 5 && date === 1 || month === 12 && date === 24 || month === 12 && date === 25 || month === 12 && date === 26) {
+        OpenSign = '<p><span style="color: red; font-weight: bold;">STÄNGT IDAG!</span></p>'
+        document.querySelector("#OpenSign").innerHTML = OpenSign
+    }
+    else if (openHours[day][0] <= time && time < openHours[day][1]){
         OpenSign = '<p>Vi har öppet just nu!</p>'
         document.querySelector("#OpenSign").innerHTML = OpenSign
     }
@@ -127,6 +134,7 @@ for(let i = 0; i < dateArr.length; i++){
     closed_days_element.innerHTML += `
         <tr>
             <th>${dateArr[i].title}</th>
+            <td></td>
             <td class="RightAlign">${dateArr[i].day} ${dateArr[i].month_worded}</td>
         </tr>
     `

@@ -22,6 +22,7 @@ var openHours = {
     6: [12, 23, "Lördag"]
 }
 
+
 let d = new Date();
 let day = d.getDay();
 let time = d.getHours();

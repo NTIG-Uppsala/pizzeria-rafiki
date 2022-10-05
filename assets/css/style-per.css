@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Quicksand';
-    src: url('../../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+    src: url('../fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
     font-weight:100;
     font-style: normal;
 }
@@ -25,11 +25,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: black;
-
-    /* For pre-loading images */
-    content:   
-        url('../images/background2.jpg')
-        url('../images/background3.jpg');
 }
 
 p, a, h1, h2, h3, h4, th, td {
@@ -44,12 +39,25 @@ p, a, th, td {
     font-size: 20px;
 }
 
-.landingPage {
-    background-image: url("../../images/background3.jpg");
+.landingPage1 {
+    background-image: url("../images/background1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 91vh;
+    height: 84vh;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landingPage2 {
+    background-image: url("../images/background2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
     z-index: 10000;
     display: flex;
     flex-direction: column;
@@ -57,7 +65,49 @@ p, a, th, td {
     align-items: center;
 }
 
-.Container img {
+.landingPage3 {
+    background-image: url("../images/background3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.cards {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 37px auto 0;
+  }
+  
+  .card {
+    cursor: pointer;
+    background-color: #161311;
+    height: 300px;
+    width: 243px;
+  }
+
+  .card-body {
+    text-align: center;
+  }
+  
+  .card h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .card img {
+    width: 243px;
+    height: 130px;
+  }
+
+#flag img {
     width: 42px;
     height: 42px;
     margin-top: 20px;
@@ -98,6 +148,7 @@ main {
 }
 
 
+
 header {
     display: flex;
     height: var(--height-header);
@@ -130,7 +181,7 @@ header {
     width: 300px;
     margin-right: auto;
     margin-left: auto;
-    background-image: url('../../images/rafikilogo.svg');
+    background-image: url('../images/rafikilogo.svg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -163,10 +214,11 @@ footer {
     width: 100%;
     max-height: 80px;
     bottom: 0px;
-    z-index: 9999;
+    z-index: 100001;
     font-size: 30px;
     background-color: #161311;
 }
+
 
 footer #Socials {
     display: flex;
@@ -214,6 +266,26 @@ main > :last-child {
     background-color: #161311e0;
     z-index: 3;
     justify-content: center;
+    text-align: right;
+    /* 
+        Set the scroll margin top on all containers, also added 2.5em for som room over the element
+        Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
+    */
+    scroll-margin-top: calc(var(--height-header) + 2.5em);
+}
+
+.homeContainer {
+    width: 700px;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    background-color: #161311e0;
+    z-index: 3;
+    justify-content: center;
+    text-align: right;
     /* 
         Set the scroll margin top on all containers, also added 2.5em for som room over the element
         Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
@@ -242,17 +314,17 @@ main > :last-child {
 }
 
 .TwitterIcon {
-    background-image: url('../../images/twitter-fill.svg');
+    background-image: url('../images/twitter-fill.svg');
     background-repeat: no-repeat;
 }
 
 .FacebookIcon {
-    background-image: url('../../images/facebook-circle-fill.svg');
+    background-image: url('../images/facebook-circle-fill.svg');
     background-repeat: no-repeat;
 }
 
 .InstagramIcon {
-    background-image: url('../../images/instagram-fill.svg');
+    background-image: url('../images/instagram-fill.svg');
     background-repeat: no-repeat;
 }
 

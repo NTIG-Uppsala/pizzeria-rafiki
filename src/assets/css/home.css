@@ -25,6 +25,11 @@ body {
     display: flex;
     flex-direction: column;
     background-color: black;
+
+    /* For pre-loading images */
+    content:   
+        url('../images/background2.jpg')
+        url('../images/background3.jpg');
 }
 
 p, a, h1, h2, h3, h4, th, td {
@@ -39,37 +44,11 @@ p, a, th, td {
     font-size: 20px;
 }
 
-.landingPage1 {
+.landingPage {
     background-image: url("../images/background1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 84vh;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.landingPage2 {
-    background-image: url("../images/background2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 90vh;
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.landingPage3 {
-    background-image: url("../images/background3.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 90vh;
     z-index: 10000;
     display: flex;
@@ -79,6 +58,12 @@ p, a, th, td {
 }
 
 
+
+#flag img {
+    width: 42px;
+    height: 42px;
+    /* margin-top: 20px; */
+}
 
 .cards {
     display: flex;
@@ -106,43 +91,15 @@ p, a, th, td {
     width: 243px;
     height: 130px;
   }
-
-#flag img {
-    width: 42px;
-    height: 42px;
-    margin-top: 20px;
-}
-
-.menuButton {
-    display: flex;
-    justify-content: center;
-}
-
-.button {
-    border: none;
-    color: white;
-    background-color: brown;
-    padding: 15px 32px;
+  
+/* .Title h1{
+    font-size: 30px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-
-
-main {
-    flex-direction: column;
-    align-items: center;
-    display: flex;
-}
+} */
 
 .FooterItem {
     min-width: 350px; 
 }
-
-
 
 header {
     display: flex;
@@ -155,20 +112,6 @@ header {
     position: sticky;
     color: white;
     background-color: #161311;
-}
-
-#number {
-    background-color:#575453e0;
-    color: white;
-    font-family: 'Quicksand';
-    border-width: 1px;
-}
-
-#submit {
-    background-color:#575453e0;
-    color: white;
-    font-family: 'Quicksand';
-    border-width: 1px;
 }
 
 .Logo {
@@ -206,6 +149,7 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: fixed;
     width: 100%;
     max-height: 80px;
     bottom: 0px;
@@ -213,7 +157,6 @@ footer {
     font-size: 30px;
     background-color: #161311;
 }
-
 
 footer #Socials {
     display: flex;
@@ -261,6 +204,7 @@ main > :last-child {
     background-color: #161311e0;
     z-index: 3;
     justify-content: center;
+    align-items: center;
     /* 
         Set the scroll margin top on all containers, also added 2.5em for som room over the element
         Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
@@ -268,7 +212,7 @@ main > :last-child {
     scroll-margin-top: calc(var(--height-header) + 2.5em);
 }
 
-.homeContainer {
+.ContainerPer {
     width: 700px;
     max-width: 100%;
     margin-top: 20px;
@@ -279,26 +223,13 @@ main > :last-child {
     background-color: #161311e0;
     z-index: 3;
     justify-content: center;
+    align-items: center;
+    text-align: right;
     /* 
         Set the scroll margin top on all containers, also added 2.5em for som room over the element
         Source: https://stackoverflow.com/questions/38069213/add-padding-top-to-scroll-when-using-href-id
     */
     scroll-margin-top: calc(var(--height-header) + 2.5em);
-}
-
-
-.Wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.Openhours {
-    width: 100%;
-}
-
-.holidays {
-    width: 100%;
 }
 
 .Icon {
@@ -344,43 +275,8 @@ main > :last-child {
 
 }
 
-table {
-    border-spacing: 0px;
-}
-
-th {
-    text-align: left;
-}
-
-.RightAlign {
-    text-align: right;
-    white-space: nowrap;
-}
-
-#Products {
-    width: 100%;
-}
-
-.Openhours th {
-    width: 50%;
-}
-
-
-tr:nth-child(even) {
-    background-color: #575453e0;
-}
-
-#Map {
-    width: 100%;
-    height: 100%;
-}
-
 /* Changes on small screens */
 @media (max-width: 800px) {
-    .Container {
-        max-width: 75vw;
-    }
-
     .landingPage {
         height: fit-content;
     }
@@ -395,6 +291,10 @@ tr:nth-child(even) {
     }
 
     .Container {
+        max-width: 75vw;
+    }
+
+    .ContainerPer {
         max-width: 75vw;
     }
     /* Change layout of the footer to columns instead of row */

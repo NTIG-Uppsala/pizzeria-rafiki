@@ -173,6 +173,7 @@ class PageTests(unittest.TestCase):
 
         openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
         productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
+        closedDayText = self.browser.find_element(By.CLASS_NAME, "holidays").text.replace("\n", " ")
 
       
         products = [
@@ -198,6 +199,14 @@ class PageTests(unittest.TestCase):
             "Söndagar", "12 - 20"
         ]
 
+        closedDays = [
+            "Trettondedag jul", "6 Januari",
+            "Första maj", "1 Maj",
+            "Julafton", "24 December",
+            "Juldagen", "25 December",
+            "Annandag jul", "26 December"
+        ]
+
         for hours in openHours:
             self.assertIn(hours, openHourText)
         print("Open hours found")
@@ -205,6 +214,10 @@ class PageTests(unittest.TestCase):
         for product in products:
             self.assertIn(product, productText)
         print("Products found")
+
+        for closedDay in closedDays:
+            self.assertIn(closedDay, closedDayText)
+        print("Closed days found")
     
     def test_check_for_contact_flen(self):
         information = {
@@ -263,6 +276,7 @@ class PageTests(unittest.TestCase):
 
         openHourText = self.browser.find_element(By.CLASS_NAME, "Openhours").text.replace("\n", " ")
         productText = self.browser.find_element(By.CLASS_NAME, "products").text.replace("\n", " ")
+        closedDayText = self.browser.find_element(By.CLASS_NAME, "holidays").text.replace("\n", " ")
 
       
         products = [
@@ -288,6 +302,14 @@ class PageTests(unittest.TestCase):
             "Söndagar", "12 - 23"
         ]
 
+        closedDays = [
+            "Trettondedag jul", "6 Januari",
+            "Första maj", "1 Maj",
+            "Julafton", "24 December",
+            "Juldagen", "25 December",
+            "Annandag jul", "26 December"
+        ]
+
         for hours in openHours:
             self.assertIn(hours, openHourText)
         print("Open hours found")
@@ -295,6 +317,10 @@ class PageTests(unittest.TestCase):
         for product in products:
             self.assertIn(product, productText)
         print("Products found")
+
+        for closedDay in closedDays:
+            self.assertIn(closedDay, closedDayText)
+        print("Closed days found")
     
     def test_check_for_contact_lulea(self):
         information = {

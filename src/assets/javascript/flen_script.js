@@ -77,3 +77,57 @@ document.addEventListener("DOMContentLoaded", (event) =>
     })
 })
 
+//Sorts the dates accordeing to today
+const current_date = new Date();
+const current_day = current_date.getDay();
+const current_hour = current_date.getHours();
+const current_minute = current_date.getMinutes();
+const closed_days = [
+    { title: 'Trettondedag jul', month_worded: "Januari", month: 1, day: 6 },
+    { title: 'Första maj', month_worded: "Maj", month: 5, day: 1  },
+    { title: 'Julafton', month_worded: "December", month: 12, day: 24 },
+    { title: 'Juldagen', month_worded: "December", month: 12, day: 25 },
+    { title: 'Annandag jul', month_worded: "December", month: 12, day: 26 },
+];
+
+/* Sort closing days */
+let closed_days_element = document.querySelector('.holidays');
+closed_days_element.innerHTML = ''; // Clear inner table
+
+let currentMonth = parseInt(current_date.getMonth() + 1); //get month returns a value between 0 and 11. setting +1 gets the real month number.
+let currentDay = parseInt(current_date.getDate());
+
+let dateArr = [];
+
+let pastDates = [];
+let futureDates = [];
+
+for(let i = 0; i < closed_days.length; i++)
+{
+        if(closed_days[i].month <= currentMonth)
+        {
+            if(closed_days[i].day >= currentDay && closed_days[i].month == currentMonth)
+            {
+                dateArr.push(closed_days[i])
+            }
+            else 
+            {
+                pastDates.push(closed_days[i]);
+            }
+        }
+        else 
+        {
+        dateArr.push(closed_days[i]);
+        
+        }
+}
+dateArr = dateArr.concat(pastDates);
+
+for(let i = 0; i < dateArr.length; i++){
+    closed_days_element.innerHTML += `
+        <tr>
+            <th>${dateArr[i].title}</th>
+            <td class="RightAlign">${dateArr[i].day} ${dateArr[i].month_worded}</td>
+        </tr>
+    `
+}

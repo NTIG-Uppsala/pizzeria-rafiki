@@ -60,6 +60,7 @@ class GlobalTest(unittest.TestCase):
                 self.assertNotEqual(link.get_attribute(
                     "href").split("/")[-1], "#")
 
+
     def test_for_large_images(self):
 
         # Get path for image folder

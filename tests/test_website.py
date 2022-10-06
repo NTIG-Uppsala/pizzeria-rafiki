@@ -44,8 +44,6 @@ class GlobalTest(unittest.TestCase):
             'flen.html'
         ]
 
-
-        #self.addCleanup(self.browser.quit) # Closes browser instance when tests are done
     @classmethod
     def tearDownClass(self):
         self.browser.quit()

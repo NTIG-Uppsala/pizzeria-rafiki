@@ -152,7 +152,6 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position: fixed;
     width: 100%;
     max-height: 80px;
     bottom: 0px;

@@ -79,10 +79,6 @@ document.addEventListener("DOMContentLoaded", (event) =>
 
 
 //Sorts the dates accordeing to today
-const current_date = new Date();
-const current_day = current_date.getDay();
-const current_hour = current_date.getHours();
-const current_minute = current_date.getMinutes();
 const closed_days = [
     { title: '۱۳ روز کریسمس', month_worded: "ژانویه", month: 1, day: 6 },
     { title: 'اولین مه', month_worded: "مه", month: 5, day: 1  },
@@ -95,8 +91,8 @@ const closed_days = [
 let closed_days_element = document.querySelector('.holidays');
 closed_days_element.innerHTML = ''; // Clear inner table
 
-let currentMonth = parseInt(current_date.getMonth() + 1); //get month returns a value between 0 and 11. setting +1 gets the real month number.
-let currentDay = parseInt(current_date.getDate());
+let currentMonth = parseInt(d.getMonth() + 1); //get month returns a value between 0 and 11. setting +1 gets the real month number.
+let currentDay = parseInt(d.getDate());
 
 let dateArr = [];
 

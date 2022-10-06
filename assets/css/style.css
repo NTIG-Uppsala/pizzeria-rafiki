@@ -40,20 +40,7 @@ p, a, th, td {
 }
 
 .landingPage1 {
-    background-image: url("../images/background1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 84vh;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.landingPage2 {
-    background-image: url("../images/background2.jpg");
+    background-image: url("../images/BG1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -65,8 +52,8 @@ p, a, th, td {
     align-items: center;
 }
 
-.landingPage3 {
-    background-image: url("../images/background3.jpg");
+.landingPage2 {
+    background-image: url("../images/BG2.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

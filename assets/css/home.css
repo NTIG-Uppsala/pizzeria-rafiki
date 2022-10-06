@@ -25,11 +25,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: black;
-
-    /* For pre-loading images */
-    content:   
-        url('../images/background2.jpg')
-        url('../images/background3.jpg');
 }
 
 p, a, h1, h2, h3, h4, th, td {
@@ -45,7 +40,7 @@ p, a, th, td {
 }
 
 .landingPage {
-    background-image: url("../images/background1.jpg");
+    background-image: url("../images/BG3.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

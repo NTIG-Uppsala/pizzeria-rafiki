@@ -113,6 +113,10 @@ p, a, th, td {
     margin-top: 20px;
 }
 
+#flag img:hover {
+    opacity: 0.7;
+}
+
 .menuButton {
     display: flex;
     justify-content: center;
@@ -129,6 +133,10 @@ p, a, th, td {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+  }
+
+  .button:hover {
+      background-color: rgb(136, 26, 26);
   }
 
 
@@ -314,14 +322,26 @@ main > :last-child {
     background-repeat: no-repeat;
 }
 
+.TwitterIcon:hover {
+    opacity: 0.7;
+}
+
 .FacebookIcon {
     background-image: url('../images/facebook-circle-fill.svg');
     background-repeat: no-repeat;
 }
 
+.FacebookIcon:hover {
+    opacity: 0.7;
+}
+
 .InstagramIcon {
     background-image: url('../images/instagram-fill.svg');
     background-repeat: no-repeat;
+}
+
+.InstagramIcon:hover {
+    opacity: 0.7;
 }
 
 .FooterLeft {
